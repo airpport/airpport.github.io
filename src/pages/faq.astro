@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import FaqList from "../components/FaqList.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { faqGroups } from "../data/faq";
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Answers to the questions we hear most about airpport and Spacecamps — pricing, trials, support and what's next."
+>
+  <Hero
+    eyebrow="FAQ"
+    title="Questions, answered"
+    description="Everything people usually ask about airpport and Spacecamps. If your question isn't here, just ask — a real person will reply."
+    trust="Usually replies within a day"
+    background="/images/hero-orbit.jpg"
+    thumbnail="/images/thumb-light.jpg"
+  >
+    <a
+      href={`mailto:${site.email}`}
+      aria-label="Email airpport"
+      class="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+    >
+      <Icon name="mail" />
+    </a>
+  </Hero>
+
+  <FaqList groups={faqGroups} description="Everything you need to know about who we are and what we build." />
+
+  <CtaBanner
+    eyebrow="Still have questions?"
+    title="Talk to a real human, not a form"
+    description="We read every message ourselves. If your question isn't covered here, send it straight through."
+    primary={{ label: "Get in touch", href: "/contact" }}
+    secondary={{ label: "See products", href: "/products" }}
+  />
+</BaseLayout>

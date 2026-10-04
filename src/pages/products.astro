@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SpacecampsShowcase from "../components/SpacecampsShowcase.astro";
+import ProductCards from "../components/ProductCards.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import Icon from "../components/Icon.astro";
+import { spacecamps } from "../data/site";
+
+const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signal"] as const;
+---
+
+<BaseLayout
+  title="Products"
+  description="Spacecamps is airpport's first product — online bookings and park management for caravan parks, with no commissions or setup fees."
+>
+  <Hero
+    eyebrow="Products"
+    title="Spacecamps, and what comes next"
+    description={spacecamps.summary}
+    trust="Product 01 · Live"
+    background="/images/hero-night.jpg"
+    thumbnail="/images/thumb-night.jpg"
+    tone="dark"
+  >
+    <a
+      href={spacecamps.url}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
+    >
+      Visit Spacecamps <Icon name="arrow-up-right" class="h-3.5 w-3.5" />
+    </a>
+  </Hero>
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.2fr] md:gap-20">
+      <div data-reveal class="md:sticky md:top-32 md:self-start">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Product 01
+        </span>
+        <h2 class="mt-5 text-3xl font-medium tracking-tight text-balance md:text-5xl">
+          {spacecamps.tagline}
+        </h2>
+        <p class="mt-5 max-w-md text-base text-muted-foreground md:text-lg">
+          Caravan parks run on long days and thin margins. Spacecamps gives operators a modern booking system without
+          the booking-platform commissions — so every dollar a guest pays goes to the park.
+        </p>
+        <a
+          href={spacecamps.url}
+          target="_blank"
+          rel="noopener"
+          class="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+        >
+          Start a free trial <Icon name="arrow-up-right" />
+        </a>
+      </div>
+
+      <ul class="divide-y divide-border border-y border-border">
+        {
+          spacecamps.features.map((feature, i) => (
+            <li data-reveal style={`--reveal-delay:${i * 60}ms`} class="flex gap-5 py-6">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-card">
+                <Icon name={featureIcons[i]} class="h-[18px] w-[18px]" />
+              </span>
+              <div>
+                <h3 class="text-xl font-medium tracking-tight">{feature.title}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-muted-foreground md:text-base">{feature.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <SectionHeading
+      eyebrow="Inside Spacecamps"
+      title="From first click to check-in"
+      description="A quick look at what guests and park managers see every day."
+    />
+    <SpacecampsShowcase />
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-5xl">
+      <SectionHeading
+        eyebrow="Pricing"
+        title="Simple plans. No commissions."
+        description="Every plan includes a 30-day free trial, with no setup fees and no lock-in contracts."
+      />
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          spacecamps.plans.map((plan, i) => (
+            <div
+              data-reveal
+              style={`--reveal-delay:${i * 80}ms`}
+              class:list={[
+                "relative flex flex-col rounded-[1.75rem] p-7",
+                plan.featured ? "bg-foreground text-background" : "border border-border bg-card",
+              ]}
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium">{plan.name}</p>
+                {plan.featured && (
+                  <span class="rounded-full bg-background/15 px-2.5 py-0.5 text-[11px] font-medium">Most popular</span>
+                )}
+              </div>
+              <p class="mt-8 text-5xl font-medium tracking-[-0.05em]">
+                {plan.price}
+                <span class:list={["text-base tracking-normal", plan.featured ? "text-background/60" : "text-muted-foreground"]}>
+                  {plan.unit}
+                </span>
+              </p>
+              <p class:list={["mt-2 text-sm", plan.featured ? "text-background/70" : "text-muted-foreground"]}>
+                {plan.detail}
+              </p>
+              <a
+                href={spacecamps.url}
+                target="_blank"
+                rel="noopener"
+                class:list={[
+                  "mt-8 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5",
+                  plan.featured ? "bg-background text-foreground" : "border border-border",
+                ]}
+              >
+                {plan.price === "Custom" ? "Talk to us" : "Start free trial"}
+                <Icon name="arrow-up-right" class="h-3.5 w-3.5" />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-center text-xs text-muted-foreground" data-reveal>
+        Prices in AUD. See <a href={spacecamps.url} target="_blank" rel="noopener" class="underline underline-offset-2">spacecamps.com.au</a> for current plans.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl">
+      <SectionHeading
+        eyebrow="Roadmap"
+        title="More departures soon"
+        description="Spacecamps is our first product, not our last."
+      />
+      <ProductCards />
+    </div>
+  </section>
+
+  <CtaBanner
+    eyebrow="Run a caravan park?"
+    title="Take bookings tonight. Keep every dollar."
+    description="Set up your park in an afternoon and start your 30-day free trial — no setup fees, no commissions."
+    primary={{ label: "Try Spacecamps free", href: spacecamps.url }}
+    secondary={{ label: "Read the FAQ", href: "/faq" }}
+  />
+</BaseLayout>

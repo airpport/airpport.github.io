@@ -1,0 +1,148 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import type { FaqGroup } from "../data/faq";
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  groups: FaqGroup[];
+}
+
+const {
+  eyebrow = "FAQ",
+  title = "Frequently asked questions",
+  description,
+  groups,
+} = Astro.props;
+---
+
+<section id="faq" class="relative px-6 py-20 md:py-28">
+  <div class="mx-auto max-w-3xl">
+    <SectionHeading eyebrow={eyebrow} title={title} description={description} />
+
+    <div class="space-y-12" data-faq>
+      {
+        groups.map((group, g) => (
+          <div data-reveal>
+            <h3 class="mb-4 text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">{group.title}</h3>
+            <div class="w-full">
+              {group.items.map((item, i) => {
+                const id = `faq-${g}-${i}`;
+                const open = g === 0 && i === 0;
+                return (
+                  <div class="faq-item" data-open={open ? "true" : "false"}>
+                    <button
+                      type="button"
+                      class="group relative w-full cursor-pointer text-left"
+                      aria-expanded={open ? "true" : "false"}
+                      aria-controls={`${id}-panel`}
+                      id={`${id}-button`}
+                    >
+                      <div class="flex items-center gap-4 px-1 py-5 md:gap-6">
+                        <div class="relative grid h-10 w-10 shrink-0 place-items-center">
+                          <div class="faq-dot absolute inset-0 rounded-full bg-foreground" />
+                          <span class="faq-num relative z-10 text-sm font-medium tracking-wide">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+                        <span class="faq-q flex-1 text-lg font-medium tracking-tight md:text-2xl">{item.question}</span>
+                        <div class="ml-auto shrink-0">
+                          <div class="grid h-8 w-8 place-items-center">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="faq-icon text-foreground">
+                              <path d="M8 1V15M1 8H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                    <div class="faq-panel" id={`${id}-panel`} role="region" aria-labelledby={`${id}-button`}>
+                      <div class="overflow-hidden">
+                        <p class="pt-2 pr-4 pb-6 pl-15 leading-relaxed text-muted-foreground md:pr-12 md:pl-17">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-dot {
+    transform: scale(0);
+    opacity: 0;
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
+  }
+  .faq-num,
+  .faq-q {
+    color: var(--muted-foreground);
+    transition: color 0.3s ease;
+  }
+  .faq-item button:hover .faq-q {
+    color: var(--foreground);
+  }
+  .faq-icon {
+    opacity: 0.4;
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
+  }
+  /* Answers stay visible without JS; collapse only once the script can open them. */
+  .faq-panel {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition:
+      grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.4s ease;
+  }
+  :global(.js) .faq-panel {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .faq-item[data-open="true"] .faq-dot {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .faq-item[data-open="true"] .faq-num {
+    color: var(--background);
+  }
+  .faq-item[data-open="true"] .faq-q {
+    color: var(--foreground);
+  }
+  .faq-item[data-open="true"] .faq-icon {
+    transform: rotate(45deg);
+    opacity: 1;
+  }
+  .faq-item[data-open="true"] .faq-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-faq]").forEach((root) => {
+    const items = Array.from(root.querySelectorAll<HTMLElement>(".faq-item"));
+    const set = (item: HTMLElement, open: boolean) => {
+      item.dataset.open = String(open);
+      item.querySelector("button")?.setAttribute("aria-expanded", String(open));
+    };
+    items.forEach((item) => {
+      item.querySelector("button")?.addEventListener("click", () => {
+        const willOpen = item.dataset.open !== "true";
+        // One answer open at a time, like the reference accordion.
+        items.forEach((other) => set(other, false));
+        set(item, willOpen);
+      });
+    });
+  });
+</script>

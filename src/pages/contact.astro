@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import Icon from "../components/Icon.astro";
+import { site, spacecamps } from "../data/site";
+
+const channels = [
+  {
+    icon: "mail",
+    title: "General enquiries",
+    description: "Questions about airpport, press, or just saying hi.",
+    label: site.email,
+    href: `mailto:${site.email}`,
+  },
+  {
+    icon: "tent",
+    title: "Spacecamps support",
+    description: "Already a customer, or thinking about it? Get help with your park.",
+    label: "spacecamps.com.au",
+    href: spacecamps.url,
+    external: true,
+  },
+  {
+    icon: "plane",
+    title: "Partnerships",
+    description: "Industry groups, integrations and investors — let's talk.",
+    label: "Email us",
+    href: `mailto:${site.email}?subject=${encodeURIComponent("Partnership enquiry")}`,
+  },
+] as const;
+
+const field =
+  "w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground";
+---
+
+<BaseLayout title="Contact" description="Get in touch with airpport — general enquiries, Spacecamps support and partnerships.">
+  <Hero
+    eyebrow="Contact"
+    title="Let's talk"
+    description="Whether you run a caravan park, have an idea for our next product, or want to partner with us — we'd love to hear from you."
+    trust="Usually replies within a day"
+    background="/images/hero-runway.jpg"
+    thumbnail="/images/thumb-light.jpg"
+  />
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl">
+      <SectionHeading eyebrow="Get in touch" title="Pick your runway" description="A real person reads every message." />
+
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          channels.map((c, i) => (
+            <a
+              href={c.href}
+              target={"external" in c ? "_blank" : undefined}
+              rel={"external" in c ? "noopener" : undefined}
+              data-reveal
+              style={`--reveal-delay:${i * 80}ms`}
+              class="group flex min-h-[260px] flex-col justify-between rounded-[1.75rem] border border-border bg-card p-7 transition-colors hover:bg-foreground hover:text-background"
+            >
+              <div class="flex items-start justify-between">
+                <span class="grid h-11 w-11 place-items-center rounded-full border border-border transition-colors group-hover:border-background/20">
+                  <Icon name={c.icon} class="h-[18px] w-[18px]" />
+                </span>
+                <Icon name="arrow-up-right" class="h-5 w-5 opacity-40 transition-all group-hover:rotate-45 group-hover:opacity-100" />
+              </div>
+              <div>
+                <h3 class="text-xl font-medium tracking-tight">{c.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-background/70">
+                  {c.description}
+                </p>
+                <p class="mt-5 text-sm font-medium break-all">{c.label}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <div data-reveal class="mt-5 grid gap-10 rounded-[2rem] border border-border bg-card p-7 md:grid-cols-[1fr_1.4fr] md:p-12">
+        <div>
+          <p class="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">Send a message</p>
+          <h2 class="mt-4 text-3xl font-medium tracking-tight md:text-4xl">Tell us what you're working on</h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+            This opens a pre-filled email in your mail app, so nothing is stored on this website.
+          </p>
+        </div>
+        <form id="contact-form" class="grid gap-4" data-email={site.email}>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="grid gap-2 text-sm font-medium">
+              Name
+              <input name="name" required autocomplete="name" class={field} placeholder="Your name" />
+            </label>
+            <label class="grid gap-2 text-sm font-medium">
+              Business
+              <input name="business" autocomplete="organization" class={field} placeholder="Optional" />
+            </label>
+          </div>
+          <label class="grid gap-2 text-sm font-medium">
+            Topic
+            <select name="topic" class={field}>
+              <option>General enquiry</option>
+              <option>Spacecamps</option>
+              <option>Partnership</option>
+              <option>Idea for a product</option>
+            </select>
+          </label>
+          <label class="grid gap-2 text-sm font-medium">
+            Message
+            <textarea name="message" required rows="5" class={field} placeholder="How can we help?"></textarea>
+          </label>
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center gap-2 justify-self-start rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+          >
+            Send message <Icon name="arrow-up-right" />
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? "").trim();
+    const subject = `${get("topic")} — ${get("name")}${get("business") ? ` (${get("business")})` : ""}`;
+    const body = `${get("message")}\n\n— ${get("name")}${get("business") ? `, ${get("business")}` : ""}`;
+    window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+import Icon from "./Icon.astro";
+
+interface Link {
+  label: string;
+  href: string;
+}
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primary: Link;
+  secondary?: Link;
+}
+const { eyebrow, title, description, primary, secondary } = Astro.props;
+const isExternal = (href: string) => /^https?:/.test(href);
+---
+
+<section class="px-6 py-20">
+  <div class="mx-auto max-w-6xl">
+    <div
+      data-reveal
+      class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-8 py-16 text-background md:px-16 md:py-24"
+    >
+      <div class="hero-grain absolute inset-0 opacity-30"></div>
+      <div
+        class="pointer-events-none absolute -right-24 -bottom-40 h-96 w-96 rounded-full bg-brand/25 blur-3xl"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="relative flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-xl">
+          <p class="text-xs tracking-[0.18em] text-background/60 uppercase">{eyebrow}</p>
+          <h2 class="mt-4 text-3xl font-medium tracking-tight text-balance md:text-5xl">{title}</h2>
+          <p class="mt-4 max-w-md text-sm text-background/70 md:text-base">{description}</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={primary.href}
+            target={isExternal(primary.href) ? "_blank" : undefined}
+            rel={isExternal(primary.href) ? "noopener" : undefined}
+            class="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium whitespace-nowrap text-foreground transition-transform hover:-translate-y-0.5"
+          >
+            {primary.label}
+            <Icon name="arrow-up-right" />
+          </a>
+          {
+            secondary && (
+              <a
+                href={secondary.href}
+                target={isExternal(secondary.href) ? "_blank" : undefined}
+                rel={isExternal(secondary.href) ? "noopener" : undefined}
+                class="inline-flex items-center gap-2 rounded-full border border-background/30 px-6 py-3 text-sm font-medium whitespace-nowrap text-background transition-colors hover:bg-background/10"
+              >
+                {secondary.label}
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

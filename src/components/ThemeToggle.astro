@@ -1,0 +1,29 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  aria-label="Toggle dark mode"
+  class:list={["grid h-9 w-9 place-items-center rounded-full bg-background text-foreground transition-opacity hover:opacity-85", className]}
+>
+  <Icon name="moon" class="h-4 w-4 dark:hidden" />
+  <Icon name="sun" class="hidden h-4 w-4 dark:block" />
+</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dark = document.documentElement.classList.toggle("dark");
+      try {
+        localStorage.setItem("theme", dark ? "dark" : "light");
+      } catch {}
+    });
+  });
+</script>
