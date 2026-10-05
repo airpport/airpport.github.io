@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroTabs from "../components/HeroTabs.astro";
+import StatsRow from "../components/StatsRow.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProductCards from "../components/ProductCards.astro";
+import PrinciplesBento from "../components/PrinciplesBento.astro";
+import SpacecampsShowcase from "../components/SpacecampsShowcase.astro";
+import FaqList from "../components/FaqList.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import Icon from "../components/Icon.astro";
+import { site, spacecamps } from "../data/site";
+import { faqGroups } from "../data/faq";
+
+const tabs = [
+  {
+    key: "company",
+    label: "airpport",
+    eyebrow: "Independent software company",
+    title: "Software that gets small operators off the ground",
+    description:
+      "We build simple, honest tools for the small businesses that keep Australia moving — starting with the people who run its caravan parks.",
+    image: "/images/hero-orbit.jpg",
+    cta: { label: "About us", href: "/about" },
+  },
+  {
+    key: "spacecamps",
+    label: "Spacecamps",
+    eyebrow: "Product 01 · Live now",
+    title: "Your park takes the bookings. We don't take a cut.",
+    description: spacecamps.summary,
+    image: "/images/hero-night.jpg",
+    cta: { label: "spacecamps.com.au", href: spacecamps.url },
+  },
+  {
+    key: "next",
+    label: "What's next",
+    eyebrow: "Cleared for take-off",
+    title: "One runway. Many more products to come.",
+    description:
+      "Spacecamps is just the first departure. We're already working on what's next for other industries that deserve better software.",
+    image: "/images/hero-runway.jpg",
+    cta: { label: "Get in touch", href: "/contact" },
+  },
+];
+---
+
+<BaseLayout title={site.name}>
+  <HeroTabs tabs={tabs} trust="Made in Australia" />
+
+  <StatsRow
+    items={[
+      { value: "0%", label: "Booking commission" },
+      { value: "24/7", label: "Online bookings" },
+      { value: "30 days", label: "Free trial" },
+      { value: "$29", label: "Plans from / month" },
+    ]}
+  />
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl">
+      <SectionHeading
+        eyebrow="Products"
+        title="What we build"
+        description="Focused software for industries that big platforms overlook. One product at a time, done properly."
+      />
+      <ProductCards />
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <SectionHeading
+      eyebrow="How we work"
+      title="Small team, fair software"
+      description="We'd rather build one thing people love than ten things they put up with. Here's what that looks like."
+    />
+    <PrinciplesBento />
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <SectionHeading
+      eyebrow="Spotlight · Spacecamps"
+      title="Everything a park needs to take bookings"
+      description="Spacecamps replaces the phone-and-paper diary with a booking system your guests will actually enjoy using."
+    />
+    <SpacecampsShowcase />
+    <div class="mt-10 flex justify-center" data-reveal>
+      <a
+        href={spacecamps.url}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+      >
+        Start a free 30-day trial
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+
+  <FaqList groups={faqGroups.slice(0, 2)} description="The short version of what people ask us most." />
+
+  <CtaBanner
+    eyebrow="Ready for take-off?"
+    title="Let's get your business off the ground"
+    description="Running a caravan park? Start with Spacecamps today. Got a different problem worth solving? We'd love to hear it."
+    primary={{ label: "Try Spacecamps", href: spacecamps.url }}
+    secondary={{ label: "Get in touch", href: "/contact" }}
+  />
+</BaseLayout>

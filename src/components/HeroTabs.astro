@@ -1,0 +1,221 @@
+---
+import Icon from "./Icon.astro";
+
+interface Tab {
+  key: string;
+  label: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  cta?: { label: string; href: string };
+}
+
+interface Props {
+  tabs: Tab[];
+  trust?: string;
+}
+
+const { tabs, trust } = Astro.props;
+const isExternal = (href: string) => /^https?:/.test(href);
+---
+
+<div class="px-4 pt-4" data-hero-tabs>
+  <div class="relative mx-auto max-w-8xl overflow-hidden rounded-[2.5rem] bg-hero-bg">
+    {
+      tabs.map((tab, i) => (
+        <div
+          class:list={["hero-bg hero-slide absolute inset-0", i === 0 && "is-active"]}
+          data-slide={tab.key}
+          aria-hidden={i === 0 ? undefined : "true"}
+        >
+          <img
+            src={tab.image}
+            alt=""
+            fetchpriority={i === 0 ? "high" : undefined}
+            loading={i === 0 ? undefined : "lazy"}
+            decoding="async"
+            class="block h-full w-full object-cover"
+          />
+          <div class="hero-grain absolute inset-0 mix-blend-overlay" />
+          <div class="absolute inset-0 bg-linear-to-b from-black/25 via-black/5 to-black/45" />
+        </div>
+      ))
+    }
+
+    <div class="relative grid min-h-[640px] grid-rows-[auto_1fr_auto] gap-10 p-8 md:min-h-[720px] md:p-14">
+      <span class="absolute top-6 left-6 h-5 w-5 rounded-tl border-t border-l border-white/40"></span>
+      <span class="absolute top-6 right-6 h-5 w-5 rounded-tr border-t border-r border-white/40"></span>
+      <span class="absolute bottom-6 left-6 h-5 w-5 rounded-bl border-b border-l border-white/40"></span>
+      <span class="absolute right-6 bottom-6 h-5 w-5 rounded-br border-r border-b border-white/40"></span>
+
+      <div class="relative z-10 grid pt-12 md:pt-20">
+        {
+          tabs.map((tab, i) => (
+            <div
+              class:list={["hero-copy col-start-1 row-start-1 max-w-3xl", i === 0 && "is-active"]}
+              data-copy={tab.key}
+              aria-hidden={i === 0 ? undefined : "true"}
+            >
+              <div class="hero-rise flex items-center gap-2 text-white/80">
+                <span class="h-1.5 w-1.5 rounded-full bg-white/80" />
+                <span class="text-xs tracking-[0.18em] uppercase">{tab.eyebrow}</span>
+              </div>
+              {i === 0 ? (
+                <h1
+                  class="hero-rise mt-4 text-4xl leading-[1.05] font-medium text-balance text-white md:text-6xl lg:text-7xl"
+                  style="--rise-delay:120ms"
+                >
+                  {tab.title}
+                </h1>
+              ) : (
+                <p class="mt-4 text-4xl leading-[1.05] font-medium tracking-[-0.035em] text-balance text-white md:text-6xl lg:text-7xl">
+                  {tab.title}
+                </p>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="relative z-10 mt-auto flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+        <div
+          class="hero-rise inline-flex rounded-full border border-white/25 bg-white/10 p-1 backdrop-blur-md"
+          role="tablist"
+          aria-label="Highlights"
+          style="--rise-delay:300ms"
+        >
+          {
+            tabs.map((tab, i) => (
+              <button
+                type="button"
+                role="tab"
+                data-tab={tab.key}
+                aria-selected={i === 0 ? "true" : "false"}
+                class="hero-tab relative rounded-full px-3 py-2 text-[13px] font-medium whitespace-nowrap sm:px-4 sm:text-sm text-white/75 transition-colors hover:text-white"
+              >
+                {tab.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="hero-rise grid md:justify-items-end" style="--rise-delay:420ms">
+          {
+            tabs.map((tab, i) => (
+              <div
+                class:list={[
+                  "hero-copy col-start-1 row-start-1 flex flex-col items-start gap-4 md:items-end md:text-right",
+                  i === 0 && "is-active",
+                ]}
+                data-copy={tab.key}
+                aria-hidden={i === 0 ? undefined : "true"}
+              >
+                <p class="max-w-md text-sm leading-relaxed text-white/85 md:text-base">{tab.description}</p>
+                <div class="flex flex-wrap items-center gap-4 md:justify-end">
+                  {trust && <span class="text-sm text-white/85">{trust}</span>}
+                  {tab.cta && (
+                    <a
+                      href={tab.cta.href}
+                      target={isExternal(tab.cta.href) ? "_blank" : undefined}
+                      rel={isExternal(tab.cta.href) ? "noopener" : undefined}
+                      tabindex={i === 0 ? undefined : -1}
+                      class="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-3.5 py-1.5 text-sm text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                    >
+                      {tab.cta.label}
+                      <Icon name="arrow-up-right" class="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-slide {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .hero-slide.is-active {
+    opacity: 1;
+  }
+  .hero-slide img {
+    transform: scale(1.06);
+    transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-slide.is-active img {
+    transform: scale(1);
+  }
+
+  .hero-copy {
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+    transition:
+      opacity 0.5s ease,
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-copy.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0.15s;
+  }
+
+  .hero-tab[aria-selected="true"] {
+    background: rgb(255 255 255 / 0.95);
+    color: #0a0a0a;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-hero-tabs]").forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-tab]"));
+    const keys = tabs.map((t) => t.dataset.tab!);
+    let current = 0;
+    let timer: number | undefined;
+
+    const show = (index: number) => {
+      current = index;
+      const key = keys[index];
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.tab === key)));
+      root.querySelectorAll<HTMLElement>("[data-slide], [data-copy]").forEach((el) => {
+        const active = (el.dataset.slide ?? el.dataset.copy) === key;
+        el.classList.toggle("is-active", active);
+        if (active) el.removeAttribute("aria-hidden");
+        else el.setAttribute("aria-hidden", "true");
+        el.querySelectorAll("a").forEach((a) => (active ? a.removeAttribute("tabindex") : a.setAttribute("tabindex", "-1")));
+      });
+    };
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const start = () => {
+      if (reduced) return;
+      window.clearInterval(timer);
+      timer = window.setInterval(() => show((current + 1) % keys.length), 7000);
+    };
+    const stop = () => window.clearInterval(timer);
+
+    tabs.forEach((tab, i) =>
+      tab.addEventListener("click", () => {
+        show(i);
+        stop(); // the visitor chose a tab; stop auto-advancing
+      }),
+    );
+    root.addEventListener("keydown", (e) => {
+      if (!(e.target instanceof HTMLElement) || !e.target.matches("[data-tab]")) return;
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const next = (current + (e.key === "ArrowRight" ? 1 : keys.length - 1)) % keys.length;
+      show(next);
+      tabs[next].focus();
+      stop();
+    });
+
+    start();
+  });
+</script>

@@ -1,0 +1,71 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  trust?: string;
+  background: string;
+  thumbnail?: string;
+  /** Darken the image a touch more when it's a light scene, to keep white text legible. */
+  tone?: "light" | "dark";
+}
+
+const { eyebrow, title, description, trust, background, thumbnail, tone = "light" } = Astro.props;
+---
+
+<div class="px-4 pt-4">
+  <div class="relative mx-auto max-w-8xl overflow-hidden rounded-[2.5rem] bg-hero-bg">
+    <div class="hero-bg absolute inset-0">
+      <img src={background} alt="" fetchpriority="high" decoding="async" class="block h-full w-full object-cover" />
+      <div class="hero-grain absolute inset-0 mix-blend-overlay"></div>
+      <div
+        class:list={[
+          "absolute inset-0 bg-linear-to-b",
+          tone === "light" ? "from-black/25 via-black/5 to-black/40" : "from-black/10 via-transparent to-black/30",
+        ]}
+      >
+      </div>
+    </div>
+
+    <div class="relative grid min-h-[600px] grid-rows-[auto_1fr_auto] gap-10 p-8 md:min-h-[700px] md:p-14">
+      <span class="absolute top-6 left-6 h-5 w-5 rounded-tl border-t border-l border-white/40"></span>
+      <span class="absolute top-6 right-6 h-5 w-5 rounded-tr border-t border-r border-white/40"></span>
+      <span class="absolute bottom-6 left-6 h-5 w-5 rounded-bl border-b border-l border-white/40"></span>
+      <span class="absolute right-6 bottom-6 h-5 w-5 rounded-br border-r border-b border-white/40"></span>
+
+      <div class="relative z-10 max-w-3xl pt-12 md:pt-20">
+        <div class="hero-rise flex items-center gap-2 text-white/80">
+          <span class="h-1.5 w-1.5 rounded-full bg-white/80"></span>
+          <span class="text-xs tracking-[0.18em] uppercase">{eyebrow}</span>
+        </div>
+        <h1
+          class="hero-rise mt-4 text-4xl leading-[1.05] font-medium text-balance text-white md:text-6xl lg:text-7xl"
+          style="--rise-delay: 120ms"
+        >
+          {title}
+        </h1>
+      </div>
+
+      <div class="relative z-10 mt-auto flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
+        {
+          thumbnail ? (
+            <div class="hero-rise" style="--rise-delay: 300ms">
+              <div class="h-32 w-32 overflow-hidden rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm md:h-36 md:w-36">
+                <img src={thumbnail} alt="" loading="lazy" decoding="async" class="block h-full w-full object-cover" />
+              </div>
+            </div>
+          ) : (
+            <div />
+          )
+        }
+        <div class="hero-rise flex flex-col items-start gap-4 md:items-end md:text-right" style="--rise-delay: 420ms">
+          <p class="max-w-md text-sm leading-relaxed text-white/85 md:text-base">{description}</p>
+          <div class="flex flex-wrap items-center gap-4">
+            {trust && <span class="text-sm text-white/85">{trust}</span>}
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
