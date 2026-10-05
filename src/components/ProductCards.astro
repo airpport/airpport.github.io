@@ -9,7 +9,7 @@ import { spacecamps } from "../data/site";
     target="_blank"
     rel="noopener"
     data-reveal
-    class="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[2rem] bg-[#0b0b18] p-7 text-white md:col-span-2 md:min-h-[520px] md:p-10"
+    class="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[2rem] bg-[#14161f] p-7 text-white md:col-span-2 md:min-h-[520px] md:p-10"
   >
     <img
       src="/images/hero-night.jpg"
@@ -64,12 +64,14 @@ import { spacecamps } from "../data/site";
       <span class="text-xs font-medium text-muted-foreground">02</span>
     </div>
     <div class="relative grid flex-1 place-items-center py-8">
-      <div class="relative h-28 w-28">
-        <div class="absolute inset-0 rounded-full border border-dashed border-foreground/25"></div>
-        <div class="absolute inset-5 rounded-full bg-foreground"></div>
-        <div class="orbit absolute inset-0">
-          <span class="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-brand"></span>
-        </div>
+      <div class="relative h-28 w-28" aria-hidden="true">
+        <div class="absolute inset-0 rounded-full border border-foreground/25"></div>
+        <div class="absolute inset-[22%] rounded-full border border-dashed border-foreground/20"></div>
+        <div class="absolute inset-x-0 top-1/2 h-px bg-foreground/15"></div>
+        <div class="absolute inset-y-0 left-1/2 w-px bg-foreground/15"></div>
+        <div class="radar-sweep absolute inset-0 rounded-full"></div>
+        <span class="blip absolute top-[24%] left-[66%] h-2 w-2 rounded-full bg-brand"></span>
+        <span class="absolute top-1/2 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"></span>
       </div>
     </div>
     <div class="relative">
@@ -85,12 +87,28 @@ import { spacecamps } from "../data/site";
 </div>
 
 <style>
-  .orbit {
-    animation: spin 9s linear infinite;
+  .radar-sweep {
+    background: conic-gradient(from 0deg, transparent 0 290deg, color-mix(in oklab, var(--brand) 45%, transparent) 360deg);
+    animation: spin 4s linear infinite;
+  }
+  .blip {
+    animation: blip 4s ease-out infinite;
   }
   @keyframes spin {
     to {
       transform: rotate(360deg);
+    }
+  }
+  @keyframes blip {
+    0%,
+    8% {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+    60%,
+    100% {
+      opacity: 0.25;
+      transform: scale(1);
     }
   }
 </style>

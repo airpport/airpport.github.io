@@ -15,7 +15,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Why the name?",
         answer:
-          "An airport is where journeys begin. We want to be the launch pad for small operators — the place where good ideas get off the ground and run smoothly every day after.",
+          "An airport is where journeys begin. We want to be the departure gate for small operators — the place where good ideas get off the ground and run smoothly every day after.",
       },
       {
         question: "Who's behind it?",

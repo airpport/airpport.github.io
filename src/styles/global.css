@@ -26,7 +26,7 @@
   --muted-foreground: #71717a;
   --border: #e4e4e7;
   --hero-bg: #b7bdc1;
-  --brand: #ff8a6b;
+  --brand: #f2a20c;
   color-scheme: light;
 }
 
@@ -39,7 +39,7 @@
   --muted-foreground: #a1a1aa;
   --border: #27272a;
   --hero-bg: #2a2d31;
-  --brand: #ff9d82;
+  --brand: #ffbe3d;
   color-scheme: dark;
 }
 
@@ -81,7 +81,7 @@
   .hero-grain {
     background-image:
       radial-gradient(circle at 30% 40%, #ffffff2e, #0000 60%),
-      radial-gradient(circle at 70% 60%, #ffc8b41f, #0000 60%);
+      radial-gradient(circle at 70% 60%, #ffd9a01f, #0000 60%);
   }
 
   .bg-dots {
