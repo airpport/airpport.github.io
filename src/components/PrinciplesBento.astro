@@ -18,11 +18,13 @@ const card = "relative overflow-hidden rounded-[1.75rem] border border-border bg
     </div>
     <div
       data-reveal
-      style="--reveal-delay:80ms"
-      class="relative grid h-[220px] place-items-center overflow-hidden rounded-[1.75rem] bg-[#120f24] text-white"
-      style="background-image: radial-gradient(circle at 30% 30%, #3b2f7a, transparent 60%), radial-gradient(circle at 80% 80%, #ff8a6b99, transparent 55%)"
+      class="relative grid h-[220px] place-items-center overflow-hidden rounded-[1.75rem] bg-[#141821] text-white"
+      style="--reveal-delay:80ms; background-image: radial-gradient(circle at 30% 20%, #4a5a7a, transparent 60%), radial-gradient(ellipse at 50% 115%, #f0b48acc, transparent 60%)"
     >
       <span class="text-4xl font-semibold tracking-[-0.05em]">airpport<span class="text-brand">.</span></span>
+      <div class="absolute inset-x-7 bottom-6 flex justify-between" aria-hidden="true">
+        {Array.from({ length: 14 }, () => <span class="h-1 w-1 rounded-full bg-[#ffd79a]/80"></span>)}
+      </div>
     </div>
   </div>
 
