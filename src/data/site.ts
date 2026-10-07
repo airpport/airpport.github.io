@@ -4,7 +4,7 @@ export const site = {
   legalName: "airpport",
   tagline: "Software that gets small operators off the ground",
   description:
-    "airpport is an Australian software company building simple, honest tools for small businesses. Our first product is Spacecamps — online bookings and park management for caravan parks.",
+    "airpport is an Australian software company building simple, honest tools for small businesses. Our first product is SPACECAMPS — online bookings and park management for caravan parks.",
   url: "https://airpport.github.io",
   // TODO: replace with the real inbox before launch.
   email: "hello@airpport.com.au",
@@ -18,7 +18,7 @@ export const nav = [
 ];
 
 export const spacecamps = {
-  name: "Spacecamps",
+  name: "SPACECAMPS",
   url: "https://spacecamps.com.au",
   tagline: "Your park takes the bookings. We don't take a cut.",
   summary:

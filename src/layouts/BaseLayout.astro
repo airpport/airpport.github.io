@@ -55,14 +55,27 @@ const ogImage = new URL(image, Astro.site);
       })}
     />
 
-    <!-- Apply theme before paint to avoid a flash. Light by default, like the reference design. -->
+    <!--
+      Apply theme before paint to avoid a flash. A choice made with the toggle wins;
+      otherwise follow the OS setting, including when it changes while the page is open.
+    -->
     <script is:inline>
       (function () {
         var d = document.documentElement;
         d.classList.add("js");
+        var stored = null;
         try {
-          if (localStorage.getItem("theme") === "dark") d.classList.add("dark");
+          stored = localStorage.getItem("theme");
         } catch (e) {}
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        d.classList.toggle("dark", stored ? stored === "dark" : mq.matches);
+        mq.addEventListener("change", function (e) {
+          var s = null;
+          try {
+            s = localStorage.getItem("theme");
+          } catch (err) {}
+          if (!s) d.classList.toggle("dark", e.matches);
+        });
       })();
     </script>
   </head>
