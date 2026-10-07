@@ -64,11 +64,11 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     </div>
   </nav>
 
-  <!-- Covers the page behind the open menu; tapping it closes the menu. -->
+  <!-- Invisible layer behind the open menu; tapping it closes the menu. -->
   <div
     id="mobile-menu-backdrop"
     aria-hidden="true"
-    class="pointer-events-none fixed inset-0 z-30 bg-black/30 opacity-0 transition-opacity duration-300 md:hidden"
+    class="pointer-events-none fixed inset-0 z-30 md:hidden"
   ></div>
 
   <div
@@ -117,7 +117,6 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     menu.classList.toggle("opacity-0", !open);
     menu.classList.toggle("pointer-events-none", !open);
     menu.classList.toggle("scale-95", !open);
-    backdrop?.classList.toggle("opacity-0", !open);
     backdrop?.classList.toggle("pointer-events-none", !open);
     btn.setAttribute("aria-expanded", String(open));
     btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
