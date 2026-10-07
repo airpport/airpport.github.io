@@ -7,7 +7,8 @@ import ProductCards from "../components/ProductCards.astro";
 import PrinciplesBento from "../components/PrinciplesBento.astro";
 import SpacecampsShowcase from "../components/SpacecampsShowcase.astro";
 import FaqList from "../components/FaqList.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
 import { faqGroups } from "../data/faq";
@@ -25,7 +26,7 @@ const tabs = [
   },
   {
     key: "spacecamps",
-    label: "Spacecamps",
+    label: "SPACECAMPS",
     eyebrow: "Product 01 · Live now",
     title: "Your park takes the bookings. We don't take a cut.",
     description: spacecamps.summary,
@@ -38,7 +39,7 @@ const tabs = [
     eyebrow: "Cleared for take-off",
     title: "One runway. Many more products to come.",
     description:
-      "Spacecamps is just the first departure. We're already working on what's next for other industries that deserve better software.",
+      "SPACECAMPS is just the first departure. We're already working on what's next for other industries that deserve better software.",
     image: "/images/hero-runway.jpg",
     cta: { label: "Get in touch", href: "/contact" },
   },
@@ -79,9 +80,9 @@ const tabs = [
 
   <section class="px-6 py-20 md:py-28">
     <SectionHeading
-      eyebrow="Spotlight · Spacecamps"
+      eyebrow="Spotlight · SPACECAMPS"
       title="Everything a park needs to take bookings"
-      description="Spacecamps replaces the phone-and-paper diary with a booking system your guests will actually enjoy using."
+      description="SPACECAMPS replaces the phone-and-paper diary with a booking system your guests will actually enjoy using."
     />
     <SpacecampsShowcase />
     <div class="mt-10 flex justify-center" data-reveal>
@@ -99,11 +100,13 @@ const tabs = [
 
   <FaqList groups={faqGroups.slice(0, 2)} description="The short version of what people ask us most." />
 
+  {/*
   <CtaBanner
     eyebrow="Ready for take-off?"
     title="Let's get your business off the ground"
-    description="Running a caravan park? Start with Spacecamps today. Got a different problem worth solving? We'd love to hear it."
-    primary={{ label: "Try Spacecamps", href: spacecamps.url }}
+    description="Running a caravan park? Start with SPACECAMPS today. Got a different problem worth solving? We'd love to hear it."
+    primary={{ label: "Try SPACECAMPS", href: spacecamps.url }}
     secondary={{ label: "Get in touch", href: "/contact" }}
   />
+  */}
 </BaseLayout>

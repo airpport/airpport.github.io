@@ -3,7 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import PrinciplesBento from "../components/PrinciplesBento.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
 
@@ -59,12 +60,12 @@ const values = [
         <p data-reveal>
           Caravan parks are a perfect example. They host countless family holidays, yet many still juggle phone calls, paper
           diaries and booking platforms that charge a commission on every stay. So we built
-          <a href={spacecamps.url} target="_blank" rel="noopener" class="font-medium text-foreground underline underline-offset-4">Spacecamps</a>
+          <a href={spacecamps.url} target="_blank" rel="noopener" class="font-medium text-foreground underline underline-offset-4">SPACECAMPS</a>
           — a modern booking system with a flat monthly price.
         </p>
         <p data-reveal style="--reveal-delay:100ms">
           That's the airpport approach: find an industry that's underserved, listen carefully, and build the simplest
-          product that genuinely makes the day easier. Then keep improving it alongside the people who use it. Spacecamps
+          product that genuinely makes the day easier. Then keep improving it alongside the people who use it. SPACECAMPS
           is our first departure — there are more on the board.
         </p>
       </div>
@@ -114,11 +115,13 @@ const values = [
     <PrinciplesBento />
   </section>
 
+  {/*
   <CtaBanner
     eyebrow="Say hello"
     title="Have a problem worth solving?"
     description="We're always looking for the next industry that deserves better tools. Tell us what's slowing your business down."
     primary={{ label: "Get in touch", href: "/contact" }}
-    secondary={{ label: "See Spacecamps", href: "/products" }}
+    secondary={{ label: "See SPACECAMPS", href: "/products" }}
   />
+  */}
 </BaseLayout>

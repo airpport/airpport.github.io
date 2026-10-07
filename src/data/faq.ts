@@ -25,12 +25,12 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
   {
-    title: "Spacecamps",
+    title: "SPACECAMPS",
     items: [
       {
-        question: "What is Spacecamps?",
+        question: "What is SPACECAMPS?",
         answer:
-          "Spacecamps is our first product: online booking and park management software for caravan parks and campgrounds. It includes a 24/7 booking page, an interactive park map, live availability, automatic guest emails and secure payments.",
+          "SPACECAMPS is our first product: online booking and park management software for caravan parks and campgrounds. It includes a 24/7 booking page, an interactive park map, live availability, automatic guest emails and secure payments.",
       },
       {
         question: "How much does it cost?",
@@ -45,7 +45,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Do I need to be technical?",
         answer:
-          "Not at all. If you can use email, you can run Spacecamps. It's designed for busy park managers, and it works well on a phone, even with patchy reception.",
+          "Not at all. If you can use email, you can run SPACECAMPS. It's designed for busy park managers, and it works well on a phone, even with patchy reception.",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const faqGroups: FaqGroup[] = [
     title: "Working with us",
     items: [
       {
-        question: "What's next after Spacecamps?",
+        question: "What's next after SPACECAMPS?",
         answer:
           "We're exploring our next product now, again for an industry that deserves better tools. If you run a small business with a frustrating software problem, we'd genuinely love to hear about it.",
       },
@@ -65,7 +65,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "How do I get in touch?",
         answer:
-          "Email us any time — a real person reads every message. For Spacecamps support, you can also reach the team through spacecamps.com.au.",
+          "Email us any time — a real person reads every message. For SPACECAMPS support, you can also reach the team through spacecamps.com.au.",
       },
     ],
   },

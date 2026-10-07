@@ -2,7 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import FaqList from "../components/FaqList.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 import { faqGroups } from "../data/faq";
@@ -10,15 +11,15 @@ import { faqGroups } from "../data/faq";
 
 <BaseLayout
   title="FAQ"
-  description="Answers to the questions we hear most about airpport and Spacecamps — pricing, trials, support and what's next."
+  description="Answers to the questions we hear most about airpport and SPACECAMPS — pricing, trials, support and what's next."
 >
   <Hero
     eyebrow="FAQ"
     title="Questions, answered"
-    description="Everything people usually ask about airpport and Spacecamps. If your question isn't here, just ask — a real person will reply."
+    description="Everything people usually ask about airpport and SPACECAMPS. If your question isn't here, just ask — a real person will reply."
     trust="Usually replies within a day"
     background="/images/hero-tower.jpg"
-    thumbnail="/images/thumb-window.jpg"
+    thumbnail="/images/thumb-boarding.jpg"
   >
     <a
       href={`mailto:${site.email}`}
@@ -31,6 +32,7 @@ import { faqGroups } from "../data/faq";
 
   <FaqList groups={faqGroups} description="Everything you need to know about who we are and what we build." />
 
+  {/*
   <CtaBanner
     eyebrow="Still have questions?"
     title="Talk to a real human, not a form"
@@ -38,4 +40,5 @@ import { faqGroups } from "../data/faq";
     primary={{ label: "Get in touch", href: "/contact" }}
     secondary={{ label: "See products", href: "/products" }}
   />
+  */}
 </BaseLayout>
