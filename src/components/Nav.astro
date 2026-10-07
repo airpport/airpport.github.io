@@ -9,7 +9,7 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
 <header class="sticky top-0 z-50 w-full px-4 pt-4">
   <nav
     aria-label="Main"
-    class="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
+    class="relative z-50 mx-auto flex max-w-5xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
   >
     <a href="/" class="flex items-center pl-4 pr-2" aria-label="airpport home">
       <!-- The bar is dark in light mode and light in dark mode, so swap the wordmark to match. -->
@@ -64,6 +64,13 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     </div>
   </nav>
 
+  <!-- Covers the page behind the open menu; tapping it closes the menu. -->
+  <div
+    id="mobile-menu-backdrop"
+    aria-hidden="true"
+    class="pointer-events-none fixed inset-0 z-30 bg-black/30 opacity-0 transition-opacity duration-300 md:hidden"
+  ></div>
+
   <div
     id="mobile-menu"
     class="pointer-events-none fixed inset-x-4 top-20 z-40 origin-top scale-95 rounded-3xl border border-border/60 bg-foreground/95 p-6 text-background opacity-0 shadow-[0_20px_60px_rgb(0,0,0,0.25)] backdrop-blur transition-all duration-300 md:hidden"
@@ -103,21 +110,27 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
 <script>
   const btn = document.getElementById("mobile-menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const backdrop = document.getElementById("mobile-menu-backdrop");
 
   function setOpen(open: boolean) {
     if (!btn || !menu) return;
     menu.classList.toggle("opacity-0", !open);
     menu.classList.toggle("pointer-events-none", !open);
     menu.classList.toggle("scale-95", !open);
+    backdrop?.classList.toggle("opacity-0", !open);
+    backdrop?.classList.toggle("pointer-events-none", !open);
     btn.setAttribute("aria-expanded", String(open));
     btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     btn.querySelector(".menu-icon")?.classList.toggle("hidden", open);
     btn.querySelector(".close-icon")?.classList.toggle("hidden", !open);
-    document.body.style.overflow = open ? "hidden" : "";
+    // Lock scroll on <html>, not <body>: html's overflow-x: clip stops body's overflow reaching the viewport,
+    // so overflow: hidden on body would make it a scroll container and the sticky header would scroll away.
+    document.documentElement.style.overflow = open ? "hidden" : "";
   }
 
   btn?.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
   menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  backdrop?.addEventListener("click", () => setOpen(false));
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
