@@ -7,7 +7,8 @@ import ProductCards from "../components/ProductCards.astro";
 import PrinciplesBento from "../components/PrinciplesBento.astro";
 import SpacecampsShowcase from "../components/SpacecampsShowcase.astro";
 import FaqList from "../components/FaqList.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
 import { faqGroups } from "../data/faq";
@@ -99,6 +100,7 @@ const tabs = [
 
   <FaqList groups={faqGroups.slice(0, 2)} description="The short version of what people ask us most." />
 
+  {/*
   <CtaBanner
     eyebrow="Ready for take-off?"
     title="Let's get your business off the ground"
@@ -106,4 +108,5 @@ const tabs = [
     primary={{ label: "Try Spacecamps", href: spacecamps.url }}
     secondary={{ label: "Get in touch", href: "/contact" }}
   />
+  */}
 </BaseLayout>

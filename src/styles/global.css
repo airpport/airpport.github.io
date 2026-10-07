@@ -51,12 +51,13 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    /* clip, not hidden: hidden turns body into a scroll container, which stops the sticky header sticking. */
+    overflow-x: clip;
   }
 
   body {
     background: var(--background);
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,

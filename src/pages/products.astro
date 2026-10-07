@@ -4,7 +4,8 @@ import Hero from "../components/Hero.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import SpacecampsShowcase from "../components/SpacecampsShowcase.astro";
 import ProductCards from "../components/ProductCards.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { spacecamps } from "../data/site";
 
@@ -20,8 +21,8 @@ const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signa
     title="Spacecamps, and what comes next"
     description={spacecamps.summary}
     trust="Product 01 · Live"
-    background="/images/hero-night.jpg"
-    thumbnail="/images/thumb-night.jpg"
+    background="/images/hero-hangar.jpg"
+    thumbnail="/images/thumb-caravan.jpg"
     tone="dark"
   >
     <a
@@ -148,10 +149,14 @@ const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signa
         title="More departures soon"
         description="Spacecamps is our first product, not our last."
       />
-      <ProductCards />
+      <ProductCards
+        image="/images/product-parkmap.jpg"
+        imageAlt="Illustrated aerial map of a caravan park with one site highlighted"
+      />
     </div>
   </section>
 
+  {/*
   <CtaBanner
     eyebrow="Run a caravan park?"
     title="Take bookings tonight. Keep every dollar."
@@ -159,4 +164,5 @@ const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signa
     primary={{ label: "Try Spacecamps free", href: spacecamps.url }}
     secondary={{ label: "Read the FAQ", href: "/faq" }}
   />
+  */}
 </BaseLayout>

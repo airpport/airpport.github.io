@@ -1,6 +1,5 @@
 ---
 import { nav } from "../data/site";
-import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -12,9 +11,10 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     aria-label="Main"
     class="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
   >
-    <a href="/" class="flex items-center gap-2 pl-3 pr-2 text-sm font-medium tracking-tight" aria-label="airpport home">
-      <Logo class="h-5 w-5 text-background" />
-      <span class="text-base font-semibold">airpport</span>
+    <a href="/" class="flex items-center pl-4 pr-2" aria-label="airpport home">
+      <!-- The bar is dark in light mode and light in dark mode, so swap the wordmark to match. -->
+      <img src="/logo-white.svg" alt="" width="978" height="204" class="h-[22px] w-auto dark:hidden" />
+      <img src="/logo.svg" alt="" width="978" height="204" class="hidden h-[22px] w-auto dark:block" />
     </a>
 
     <ul class="hidden items-center gap-1 text-sm md:flex">

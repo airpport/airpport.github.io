@@ -3,7 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import PrinciplesBento from "../components/PrinciplesBento.astro";
-import CtaBanner from "../components/CtaBanner.astro";
+// Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
+// import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
 
@@ -114,6 +115,7 @@ const values = [
     <PrinciplesBento />
   </section>
 
+  {/*
   <CtaBanner
     eyebrow="Say hello"
     title="Have a problem worth solving?"
@@ -121,4 +123,5 @@ const values = [
     primary={{ label: "Get in touch", href: "/contact" }}
     secondary={{ label: "See Spacecamps", href: "/products" }}
   />
+  */}
 </BaseLayout>
