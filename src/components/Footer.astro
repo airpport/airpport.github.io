@@ -28,19 +28,7 @@ const year = new Date().getFullYear();
 
 <footer class="px-4 pt-20 pb-4 md:pt-32">
   <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-foreground text-background">
-    <div class="grid gap-10 px-8 pt-12 pb-0 md:grid-cols-[1.4fr_repeat(3,1fr)] md:gap-12 md:px-14 md:pt-16">
-      <div class="space-y-5">
-        <p class="text-xs tracking-[0.18em] text-background/50 uppercase">Email</p>
-        <a
-          href={`mailto:${site.email}`}
-          class="block text-xl font-medium tracking-tight break-all transition-opacity hover:opacity-70 md:text-2xl"
-        >
-          {site.email}
-        </a>
-        <p class="max-w-xs text-sm text-background/60">
-          Independent software, made in {site.location}.
-        </p>
-      </div>
+    <div class="flex flex-col gap-10 px-8 pt-12 pb-0 md:flex-row md:gap-24 md:px-14 md:pt-16">
       {
         columns.map((col) => (
           <div class="space-y-4">
@@ -95,7 +83,7 @@ const year = new Date().getFullYear();
 
     <div class="px-6 pb-2 md:px-12">
       <p
-        class="block max-w-full truncate text-[21vw] leading-[0.85] font-semibold tracking-[-0.06em] select-none md:text-[15.5vw] xl:text-[13.2rem]"
+        class="block max-w-full truncate text-[19vw] leading-[0.85] font-semibold tracking-[-0.03em] select-none md:text-[15.5vw] xl:text-[13.2rem]"
         aria-hidden="true"
       >
         airpport<span class="text-brand">.</span>

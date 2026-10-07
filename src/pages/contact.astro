@@ -50,29 +50,30 @@ const field =
 
       <div class="grid gap-5 md:grid-cols-3">
         {
+          // Reveal on a wrapper: its transition rule would otherwise replace the card's hover transition.
           channels.map((c, i) => (
-            <a
-              href={c.href}
-              target={"external" in c ? "_blank" : undefined}
-              rel={"external" in c ? "noopener" : undefined}
-              data-reveal
-              style={`--reveal-delay:${i * 80}ms`}
-              class="group flex min-h-[260px] flex-col justify-between rounded-[1.75rem] border border-border bg-card p-7 transition-colors hover:bg-foreground hover:text-background"
-            >
-              <div class="flex items-start justify-between">
-                <span class="grid h-11 w-11 place-items-center rounded-full border border-border transition-colors group-hover:border-background/20">
-                  <Icon name={c.icon} class="h-[18px] w-[18px]" />
-                </span>
-                <Icon name="arrow-up-right" class="h-5 w-5 opacity-40 transition-all group-hover:rotate-45 group-hover:opacity-100" />
-              </div>
-              <div>
-                <h3 class="text-xl font-medium tracking-tight">{c.title}</h3>
-                <p class="mt-2 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-background/70">
-                  {c.description}
-                </p>
-                <p class="mt-5 text-sm font-medium break-all">{c.label}</p>
-              </div>
-            </a>
+            <div data-reveal style={`--reveal-delay:${i * 80}ms`}>
+              <a
+                href={c.href}
+                target={"external" in c ? "_blank" : undefined}
+                rel={"external" in c ? "noopener" : undefined}
+                class="group flex h-full min-h-[260px] flex-col justify-between rounded-[1.75rem] border border-border bg-card p-7 transition-colors hover:bg-foreground hover:text-background"
+              >
+                <div class="flex items-start justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-full border border-border transition-colors group-hover:border-background/20">
+                    <Icon name={c.icon} class="h-[18px] w-[18px]" />
+                  </span>
+                  <Icon name="arrow-up-right" class="h-5 w-5 opacity-40 transition-all group-hover:rotate-45 group-hover:opacity-100" />
+                </div>
+                <div>
+                  <h3 class="text-xl font-medium tracking-tight">{c.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-background/70">
+                    {c.description}
+                  </p>
+                  <p class="mt-5 text-sm font-medium break-all">{c.label}</p>
+                </div>
+              </a>
+            </div>
           ))
         }
       </div>
