@@ -91,7 +91,7 @@ const portalHost = "riverbend.spacecamps.com.au";
         Guests pick a free site, see the exact price and pay by card. Nobody has to pick up the phone.
       </p>
     </div>
-    <div class="flex flex-1 flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-sm" aria-hidden="true">
+    <div class="overflow-hidden rounded-2xl border border-border bg-background shadow-sm" aria-hidden="true">
       <div class="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
         <span class="h-2 w-2 rounded-full bg-border"></span>
         <span class="h-2 w-2 rounded-full bg-border"></span>
@@ -100,7 +100,7 @@ const portalHost = "riverbend.spacecamps.com.au";
           {portalHost}/book/confirm
         </span>
       </div>
-      <div class="portal flex flex-1 flex-col gap-3 p-3">
+      <div class="portal flex flex-col gap-3 p-3">
         <div class="rounded-xl bg-white px-3 py-4 text-center shadow-sm ring-1 ring-(--p-ring)">
           <span class="mx-auto grid h-8 w-8 place-items-center rounded-full bg-(--ok-100) text-(--ok-600)">
             <Icon name="check" class="h-4 w-4" />
@@ -146,30 +146,6 @@ const portalHost = "riverbend.spacecamps.com.au";
               <span class="text-sm font-bold">$126.00</span>
             </div>
           </div>
-        </div>
-
-        <div class="rounded-xl bg-white px-3 py-2.5 text-[10px] text-(--p-muted) shadow-sm ring-1 ring-(--p-ring)">
-          <p class="text-[11px] font-semibold text-(--p-ink)">What's Next?</p>
-          <ul class="mt-2 space-y-1.5">
-            {
-              [
-                ["mail", "Check your email for the confirmation details and receipt"],
-                ["calendar", "Arrive on Fri, 11 Dec 2026 for check-in"],
-              ].map(([icon, text]) => (
-                <li class="flex items-center gap-2">
-                  <span class="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-(--p-tint) ring-1 ring-(--p-ring)">
-                    <Icon name={icon as "mail" | "calendar"} class="h-2.5 w-2.5" />
-                  </span>
-                  {text}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-
-        <div class="mt-auto grid grid-cols-2 gap-2 text-[10px] font-semibold">
-          <span class="rounded-lg bg-white py-2 text-center shadow-sm ring-1 ring-(--p-ring)">Back to Home</span>
-          <span class="rounded-lg bg-(--p-600) py-2 text-center text-white shadow-sm">Browse More Sites</span>
         </div>
       </div>
     </div>
