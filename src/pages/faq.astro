@@ -7,11 +7,24 @@ import FaqList from "../components/FaqList.astro";
 import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 import { faqGroups } from "../data/faq";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  ),
+};
 ---
 
 <BaseLayout
-  title="FAQ"
+  title="Frequently asked questions"
   description="Common questions about airpport and SPACECAMPS: pricing, trials, support and what's next."
+  schema={faqSchema}
 >
   <Hero
     eyebrow="FAQ"
@@ -37,8 +50,8 @@ import { faqGroups } from "../data/faq";
     eyebrow="Still have questions?"
     title="Ask us directly"
     description="If your question isn't covered here, send it to us and we'll answer it ourselves."
-    primary={{ label: "Get in touch", href: "/contact" }}
-    secondary={{ label: "See products", href: "/products" }}
+    primary={{ label: "Get in touch", href: "/contact/" }}
+    secondary={{ label: "See products", href: "/products/" }}
   />
   */}
 </BaseLayout>

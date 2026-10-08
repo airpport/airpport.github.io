@@ -1,20 +1,26 @@
 // Central place for company details. Update these and every page follows.
 export const site = {
   name: "airpport",
-  legalName: "airpport",
+  legalName: "airpport Pty Ltd",
+  // Registered as AIRPPORT PTY LTD. Shown in the footer, on the contact and legal pages, and in structured data.
+  abn: "85 703 022 173",
+  acn: "703 022 173",
   tagline: "Software that gets small operators off the ground",
   description:
-    "airpport is an Australian software company building simple tools for small businesses. Our first product, SPACECAMPS, runs online bookings and park management for caravan parks.",
-  url: "https://airpport.github.io",
+    "airpport is an Australian software company building simple tools for small businesses, starting with SPACECAMPS, booking software for caravan parks.",
+  url: "https://airpport.com",
   // TODO: replace with the real inbox before launch.
   email: "hello@airpport.com.au",
   location: "Australia",
+  state: "NSW",
+  // "Last updated" date (YYYY-MM-DD) on the privacy policy and terms. Update it whenever either page changes.
+  legalUpdated: "2026-10-08",
 };
 
 export const nav = [
-  { label: "About", href: "/about" },
-  { label: "Products", href: "/products" },
-  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about/" },
+  { label: "Products", href: "/products/" },
+  { label: "FAQ", href: "/faq/" },
 ];
 
 export const spacecamps = {

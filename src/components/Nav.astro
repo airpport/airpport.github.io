@@ -2,8 +2,9 @@
 import { nav } from "../data/site";
 import ThemeToggle from "./ThemeToggle.astro";
 
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
+const trim = (p: string) => p.replace(/\/$/, "") || "/";
+const path = trim(Astro.url.pathname);
+const isActive = (href: string) => path === trim(href) || path.startsWith(`${trim(href)}/`);
 ---
 
 <header class="sticky top-0 z-50 w-full px-4 pt-4">
@@ -39,7 +40,7 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     <div class="flex items-center gap-2 pr-1">
       <ThemeToggle class="hidden sm:grid" />
       <a
-        href="/contact"
+        href="/contact/"
         class="hidden rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5 hover:shadow-md sm:inline-flex"
       >
         Get in touch
@@ -97,7 +98,7 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
     </ul>
     <div class="mt-4 flex items-center gap-3">
       <a
-        href="/contact"
+        href="/contact/"
         class="inline-flex flex-1 items-center justify-center rounded-full bg-background px-5 py-3 text-sm font-medium text-foreground"
       >
         Get in touch

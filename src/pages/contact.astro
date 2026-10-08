@@ -34,7 +34,7 @@ const field =
   "w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground";
 ---
 
-<BaseLayout title="Contact" description="Contact airpport for general enquiries, SPACECAMPS support and partnerships.">
+<BaseLayout title="Contact us" description="Contact airpport for general enquiries, SPACECAMPS support and partnerships. A real person reads every message and usually replies within a day.">
   <Hero
     eyebrow="Contact"
     title="Let's talk"
@@ -117,6 +117,28 @@ const field =
             Send message <Icon name="arrow-up-right" />
           </button>
         </form>
+      </div>
+
+      <div data-reveal class="mt-5 rounded-[2rem] border border-border bg-card p-7 md:p-12">
+        <h2 class="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">Business details</h2>
+        <dl class="mt-6 grid gap-6 text-sm sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <dt class="text-muted-foreground">Registered name</dt>
+            <dd class="mt-1 font-medium">{site.legalName}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-foreground">ABN</dt>
+            <dd class="mt-1 font-medium tabular-nums">{site.abn}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-foreground">ACN</dt>
+            <dd class="mt-1 font-medium tabular-nums">{site.acn}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-foreground">Based in</dt>
+            <dd class="mt-1 font-medium">{site.state}, {site.location}</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>

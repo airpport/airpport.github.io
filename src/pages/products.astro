@@ -7,14 +7,40 @@ import ProductCards from "../components/ProductCards.astro";
 // Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
 // import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
-import { spacecamps } from "../data/site";
+import { site, spacecamps } from "../data/site";
 
 const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signal"] as const;
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: spacecamps.name,
+  url: spacecamps.url,
+  description: spacecamps.summary,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  publisher: { "@id": `${site.url}/#organization` },
+  offers: spacecamps.plans
+    .filter((plan) => plan.price.startsWith("$"))
+    .map((plan) => ({
+      "@type": "Offer",
+      name: `${plan.name}: ${plan.detail}`,
+      price: plan.price.slice(1),
+      priceCurrency: "AUD",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: plan.price.slice(1),
+        priceCurrency: "AUD",
+        billingDuration: "P1M",
+      },
+    })),
+};
 ---
 
 <BaseLayout
-  title="Products"
+  title="SPACECAMPS caravan park booking software"
   description="SPACECAMPS, airpport's first product, runs online bookings and park management for caravan parks with no commissions or setup fees."
+  schema={productSchema}
 >
   <Hero
     eyebrow="Products"
@@ -162,7 +188,7 @@ const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signa
     title="Take bookings tonight. Keep every dollar."
     description="Set up your park in an afternoon and start a 30-day free trial. No setup fees or commissions."
     primary={{ label: "Try SPACECAMPS free", href: spacecamps.url }}
-    secondary={{ label: "Read the FAQ", href: "/faq" }}
+    secondary={{ label: "Read the FAQ", href: "/faq/" }}
   />
   */}
 </BaseLayout>

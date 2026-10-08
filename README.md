@@ -22,9 +22,9 @@ Requires Node 22.12+.
 src/
   data/site.ts        # company details, nav, SPACECAMPS features & pricing
   data/faq.ts         # FAQ content (used on / and /faq)
-  layouts/            # BaseLayout: <head>, nav, footer, scroll reveal
+  layouts/            # BaseLayout (<head>, SEO tags, nav, footer), LegalLayout
   components/         # Hero, HeroTabs, FaqList, CtaBanner, Footer, …
-  pages/              # /, /about, /products, /faq, /contact, 404
+  pages/              # /, /about, /products, /faq, /contact, /privacy, /terms, 404, robots.txt
   styles/global.css   # theme tokens (light + dark) and animations
 public/images/        # hero art, thumbnails and the social share image
 ```
