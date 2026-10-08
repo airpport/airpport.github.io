@@ -12,7 +12,7 @@ import heroHangar from "../assets/images/hero-hangar.jpg";
 import productParkmap from "../assets/images/product-parkmap.jpg";
 import thumbCaravan from "../assets/images/thumb-caravan.jpg";
 
-const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signal"] as const;
+const featureIcons = ["calendar", "map", "layers", "key", "credit-card", "signal"] as const;
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -42,7 +42,7 @@ const productSchema = {
 
 <BaseLayout
   title="SPACECAMPS caravan park booking software"
-  description="SPACECAMPS, airpport's first product, runs online bookings and park management for caravan parks with no commissions or setup fees."
+  description="SPACECAMPS, airpport's first product, runs online bookings, check-in and park management for caravan parks with no commission on stays."
   schema={productSchema}
 >
   <Hero
@@ -76,8 +76,8 @@ const productSchema = {
           {spacecamps.tagline}
         </h2>
         <p class="mt-5 max-w-md text-base text-muted-foreground md:text-lg">
-          Caravan parks run on long days and thin margins. SPACECAMPS charges a flat monthly fee instead of a commission,
-          so every dollar a guest pays goes to the park.
+          Caravan parks run on long days and thin margins. A 15% commission on a $300 weekend costs a park $45. SPACECAMPS
+          charges one flat monthly fee instead, however many nights you sell.
         </p>
         <a
           href={spacecamps.url}
@@ -121,7 +121,7 @@ const productSchema = {
       <SectionHeading
         eyebrow="Pricing"
         title="Simple plans. No commissions."
-        description="Every plan has a 30-day free trial, no setup fees and no lock-in contract."
+        description="Every plan has a 30-day free trial with no credit card needed to start, and no lock-in contract."
       />
       <div class="grid gap-5 md:grid-cols-3">
         {
@@ -188,8 +188,8 @@ const productSchema = {
   {/*
   <CtaBanner
     eyebrow="Run a caravan park?"
-    title="Take bookings tonight. Keep every dollar."
-    description="Set up your park in an afternoon and start a 30-day free trial. No setup fees or commissions."
+    title="Take bookings tonight. Pay no commission."
+    description="Set up your park in under an hour and start a 30-day free trial. No commission on stays."
     primary={{ label: "Try SPACECAMPS free", href: spacecamps.url }}
     secondary={{ label: "Read the FAQ", href: "/faq/" }}
   />
