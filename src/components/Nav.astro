@@ -10,9 +10,10 @@ const isActive = (href: string) => path === trim(href) || path.startsWith(`${tri
 <header class="sticky top-0 z-50 w-full px-6 pt-4">
   <nav
     aria-label="Main"
-    class="relative z-50 mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
+    class="relative z-50 mx-auto flex max-w-6xl items-center justify-between rounded-full md:grid md:grid-cols-[1fr_auto_1fr] border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
   >
-    <a href="/" class="flex items-center pl-4 pr-2" aria-label="airpport home">
+    <!-- On desktop, equal 1fr side columns keep the links centred in the bar regardless of logo/controls width. -->
+    <a href="/" class="flex items-center justify-self-start pl-4 pr-2" aria-label="airpport home">
       <!-- The bar is dark in light mode and light in dark mode, so swap the wordmark to match. -->
       <img src="/logo-white.svg" alt="" width="978" height="204" class="h-[22px] w-auto dark:hidden" />
       <img src="/logo.svg" alt="" width="978" height="204" class="hidden h-[22px] w-auto dark:block" />
@@ -37,7 +38,7 @@ const isActive = (href: string) => path === trim(href) || path.startsWith(`${tri
       }
     </ul>
 
-    <div class="flex items-center gap-2 pr-1">
+    <div class="flex items-center gap-2 justify-self-end pr-1">
       <ThemeToggle class="hidden sm:grid" />
       {/* Contact page is disabled for now; restore this button with src/pages/_contact.astro.
       <a
