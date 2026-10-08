@@ -9,14 +9,14 @@ const channels = [
   {
     icon: "mail",
     title: "General enquiries",
-    description: "Questions about airpport, press, or just saying hi.",
+    description: "Questions about airpport, press, or anything else.",
     label: site.email,
     href: `mailto:${site.email}`,
   },
   {
     icon: "tent",
     title: "SPACECAMPS support",
-    description: "Already a customer, or thinking about it? Get help with your park.",
+    description: "Help with your park, whether you're a customer or still deciding.",
     label: "spacecamps.com.au",
     href: spacecamps.url,
     external: true,
@@ -24,7 +24,7 @@ const channels = [
   {
     icon: "plane",
     title: "Partnerships",
-    description: "Industry groups, integrations and investors — let's talk.",
+    description: "For industry groups, integration partners and investors.",
     label: "Email us",
     href: `mailto:${site.email}?subject=${encodeURIComponent("Partnership enquiry")}`,
   },
@@ -34,11 +34,11 @@ const field =
   "w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground";
 ---
 
-<BaseLayout title="Contact" description="Get in touch with airpport — general enquiries, SPACECAMPS support and partnerships.">
+<BaseLayout title="Contact" description="Contact airpport for general enquiries, SPACECAMPS support and partnerships.">
   <Hero
     eyebrow="Contact"
     title="Let's talk"
-    description="Whether you run a caravan park, have an idea for our next product, or want to partner with us — we'd love to hear from you."
+    description="Write to us about your caravan park, an idea for our next product, or a partnership."
     trust="Usually replies within a day"
     background="/images/hero-approach.jpg"
     thumbnail="/images/thumb-window.jpg"
@@ -83,7 +83,7 @@ const field =
           <p class="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">Send a message</p>
           <h2 class="mt-4 text-3xl font-medium tracking-tight md:text-4xl">Tell us what you're working on</h2>
           <p class="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            This opens a pre-filled email in your mail app, so nothing is stored on this website.
+            The button opens a pre-filled email in your mail app. This website stores nothing.
           </p>
         </div>
         <form id="contact-form" class="grid gap-4" data-email={site.email}>
