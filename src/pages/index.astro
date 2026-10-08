@@ -12,6 +12,9 @@ import FaqList from "../components/FaqList.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
 import { faqGroups } from "../data/faq";
+import heroNight from "../assets/images/hero-night.jpg";
+import heroRunway from "../assets/images/hero-runway.jpg";
+import heroSky from "../assets/images/hero-sky.jpg";
 
 const tabs = [
   {
@@ -21,8 +24,8 @@ const tabs = [
     title: "Software that gets small operators off the ground",
     description:
       "We build simple tools for Australian small businesses, starting with caravan parks.",
-    image: "/images/hero-sky.jpg",
-    cta: { label: "About us", href: "/about" },
+    image: heroSky,
+    cta: { label: "About us", href: "/about/" },
   },
   {
     key: "spacecamps",
@@ -30,7 +33,7 @@ const tabs = [
     eyebrow: "Product 01 · Live now",
     title: "Your park takes the bookings. We don't take a cut.",
     description: spacecamps.summary,
-    image: "/images/hero-night.jpg",
+    image: heroNight,
     cta: { label: "spacecamps.com.au", href: spacecamps.url },
   },
   {
@@ -40,8 +43,9 @@ const tabs = [
     title: "More products are on the runway.",
     description:
       "SPACECAMPS is the first departure. The next product is already in the works.",
-    image: "/images/hero-runway.jpg",
-    cta: { label: "Get in touch", href: "/contact" },
+    image: heroRunway,
+    // Contact page is disabled for now; restore this link with src/pages/_contact.astro.
+    // cta: { label: "Get in touch", href: "/contact/" },
   },
 ];
 ---
@@ -106,7 +110,7 @@ const tabs = [
     title="Let's get your business off the ground"
     description="Run a caravan park? Try SPACECAMPS. Got a different problem? Tell us about it."
     primary={{ label: "Try SPACECAMPS", href: spacecamps.url }}
-    secondary={{ label: "Get in touch", href: "/contact" }}
+    secondary={{ label: "Get in touch", href: "/contact/" }}
   />
   */}
 </BaseLayout>

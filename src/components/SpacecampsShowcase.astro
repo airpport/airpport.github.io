@@ -1,5 +1,8 @@
 ---
+import { Picture } from "astro:assets";
 import Icon from "./Icon.astro";
+import { formats } from "../data/images";
+import thumbNight from "../assets/images/thumb-night.jpg";
 
 // Site grid for the park-map mock: 0 = free, 1 = booked, 2 = selected.
 const sites = [1, 0, 0, 1, 1, 0, 0, 1, 0, 2, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0];
@@ -25,7 +28,17 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
         </span>
       </div>
       <div class="space-y-2 pt-3">
-        <div class="h-16 rounded-xl bg-[url(/images/thumb-night.jpg)] bg-cover bg-center"></div>
+        <Picture
+          src={thumbNight}
+          alt=""
+          formats={formats}
+          widths={[400, 600]}
+          sizes="(min-width: 768px) 330px, 100vw"
+          loading="lazy"
+          decoding="async"
+          pictureAttributes={{ class: "block" }}
+          class="block h-16 w-full rounded-xl object-cover"
+        />
         <div class="h-2.5 w-2/3 rounded-full bg-foreground/80"></div>
         <div class="h-2 w-1/2 rounded-full bg-muted"></div>
         <div class="flex gap-2 pt-1">

@@ -1,0 +1,99 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { site, spacecamps } from "../data/site";
+---
+
+<LegalLayout
+  title="Terms and conditions"
+  description="The terms and conditions for using the airpport website, operated by airpport Pty Ltd."
+  summary="The terms that apply when you use this website. Our products have their own terms, which you agree to when you sign up."
+>
+  <h2>About these terms</h2>
+  <p>
+    This website is operated by <strong>{site.legalName}</strong> (ABN {site.abn}, ACN {site.acn}), referred to as
+    "airpport", "we", "us" or "our". By using this website, you agree to these terms. If you don't agree, please don't
+    use the site.
+  </p>
+
+  <h2>Our products have their own terms</h2>
+  <p>
+    These terms cover this website only. If you sign up for one of our products, that product's terms apply to your use
+    of it. For {spacecamps.name}, those are the
+    <a href={`${spacecamps.url}/terms-conditions`} target="_blank" rel="noopener">{spacecamps.name} Terms of Service</a>.
+    If those terms conflict with these, the product terms apply.
+  </p>
+
+  <h2>Using this website</h2>
+  <p>You may use this website for lawful purposes. You must not:</p>
+  <ul>
+    <li>use it in a way that breaks any law or infringes anyone's rights</li>
+    <li>try to gain unauthorised access to the website or the systems that host it</li>
+    <li>interfere with the website, including by introducing malware or placing an unreasonable load on it</li>
+    <li>copy or scrape its content in bulk, or present it as your own</li>
+  </ul>
+
+  <h2>Information on this website</h2>
+  <p>
+    We try to keep this website accurate and up to date, but its content is general information only. It isn't
+    professional advice, and it isn't an offer we're bound by.
+  </p>
+  <p>
+    Prices, plans and features shown here can change. The current details for each product are on that product's own
+    website, and the price you pay is the one shown when you sign up. All prices are in Australian dollars.
+  </p>
+
+  <h2>Intellectual property</h2>
+  <p>
+    The content of this website, including its text, graphics, logos and design, and the airpport and
+    {spacecamps.name} names, belongs to us or our licensors. You may view and share pages from this website for your
+    own non-commercial purposes. Any other use needs our written permission.
+  </p>
+
+  <h2>Links to other websites</h2>
+  <p>
+    This website links to other websites, including our product websites and third-party services. We aren't
+    responsible for the content or practices of websites we don't operate, and a link isn't an endorsement.
+  </p>
+
+  <h2>Your rights under Australian Consumer Law</h2>
+  <p>
+    Our goods and services come with guarantees that can't be excluded under the Australian Consumer Law. Nothing in
+    these terms excludes, restricts or changes any right or remedy you have under the Australian Consumer Law or any
+    other law that can't lawfully be excluded.
+  </p>
+
+  <h2>Limitation of liability</h2>
+  <p>
+    To the extent the law allows, we provide this website "as is", and we don't guarantee it will always be available,
+    uninterrupted or free of errors. To the extent the law allows, we are not liable for any loss or damage arising from
+    your use of, or inability to use, this website, including indirect or consequential loss.
+  </p>
+  <p>
+    Where our liability can't be excluded but can be limited, it is limited to supplying the relevant services again
+    or paying the cost of having them supplied again.
+  </p>
+
+  <h2>Privacy</h2>
+  <p>
+    Our <a href="/privacy/">privacy policy</a> explains how we handle personal information. This website doesn't use
+    cookies or analytics.
+  </p>
+
+  <h2>Changes to these terms</h2>
+  <p>
+    We may update these terms from time to time by posting a new version on this page. The date at the top shows when
+    they last changed. If you keep using the website after a change, the updated terms apply.
+  </p>
+
+  <h2>Governing law</h2>
+  <p>
+    These terms are governed by the laws of New South Wales, Australia. You and we submit to the non-exclusive
+    jurisdiction of the courts of New South Wales and the courts that can hear appeals from them.
+  </p>
+
+  <h2>Contact us</h2>
+  <p>
+    {site.legalName}<br />
+    {site.state}, {site.location}
+  </p>
+</LegalLayout>

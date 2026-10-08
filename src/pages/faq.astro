@@ -4,31 +4,35 @@ import Hero from "../components/Hero.astro";
 import FaqList from "../components/FaqList.astro";
 // Closing CTA banner is disabled for now; restore this import with the block at the end of the page.
 // import CtaBanner from "../components/CtaBanner.astro";
-import Icon from "../components/Icon.astro";
-import { site } from "../data/site";
 import { faqGroups } from "../data/faq";
+import heroTower from "../assets/images/hero-tower.jpg";
+import thumbBoarding from "../assets/images/thumb-boarding.jpg";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  ),
+};
 ---
 
 <BaseLayout
-  title="FAQ"
+  title="Frequently asked questions"
   description="Common questions about airpport and SPACECAMPS: pricing, trials, support and what's next."
+  schema={faqSchema}
 >
   <Hero
     eyebrow="FAQ"
     title="Questions, answered"
-    description="What people ask most about airpport and SPACECAMPS. If your question isn't here, email us."
-    trust="Usually replies within a day"
-    background="/images/hero-tower.jpg"
-    thumbnail="/images/thumb-boarding.jpg"
-  >
-    <a
-      href={`mailto:${site.email}`}
-      aria-label="Email airpport"
-      class="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-    >
-      <Icon name="mail" />
-    </a>
-  </Hero>
+    description="What people ask most about airpport and SPACECAMPS."
+    background={heroTower}
+    thumbnail={thumbBoarding}
+  />
 
   <FaqList groups={faqGroups} description="Who we are and what we build." />
 
@@ -37,8 +41,8 @@ import { faqGroups } from "../data/faq";
     eyebrow="Still have questions?"
     title="Ask us directly"
     description="If your question isn't covered here, send it to us and we'll answer it ourselves."
-    primary={{ label: "Get in touch", href: "/contact" }}
-    secondary={{ label: "See products", href: "/products" }}
+    primary={{ label: "Get in touch", href: "/contact/" }}
+    secondary={{ label: "See products", href: "/products/" }}
   />
   */}
 </BaseLayout>

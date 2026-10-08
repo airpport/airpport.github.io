@@ -1,0 +1,113 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { site, spacecamps } from "../data/site";
+---
+
+<LegalLayout
+  title="Privacy policy"
+  description="How airpport Pty Ltd collects, uses and protects personal information through this website and when you contact us."
+  summary="How we handle personal information when you visit this website or get in touch with us. The short version: this site has no cookies or analytics, and we only hold what you choose to send us."
+>
+  <h2>Who we are</h2>
+  <p>
+    This policy applies to <strong>{site.legalName}</strong> (ABN {site.abn}, ACN {site.acn}), referred to as
+    "airpport", "we", "us" or "our". We are an Australian software company based in New South Wales. We handle
+    personal information in line with the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles.
+  </p>
+
+  <h2>What this policy covers</h2>
+  <p>
+    This policy covers this website ({site.url.replace("https://", "")}) and any contact you have with airpport
+    directly, such as writing to us about our products, partnerships or a business idea.
+  </p>
+  <p>
+    {spacecamps.name} has its own privacy policy, which applies when you use the {spacecamps.name} service or website. You
+    can read it at <a href={`${spacecamps.url}/privacy-policy`} target="_blank" rel="noopener">spacecamps.com.au/privacy-policy</a>.
+  </p>
+
+  <h2>Information we collect</h2>
+  <p>We only collect personal information you choose to give us. That can include:</p>
+  <ul>
+    <li>your name, email address and business name</li>
+    <li>the content of your message, and any details you include in it</li>
+    <li>records of our correspondence with you</li>
+  </ul>
+
+  <h2>Cookies, analytics and tracking</h2>
+  <p>
+    This website does not use cookies, analytics, advertising pixels or any other tracking. Fonts and images are served
+    from this website, so no third-party services are loaded while you browse.
+  </p>
+  <p>
+    If you switch between light and dark mode, your choice is saved in your browser's local storage so the site
+    remembers it next time. It stays on your device and is never sent to us. You can clear it at any time through your
+    browser settings.
+  </p>
+
+  <h2>Hosting</h2>
+  <p>
+    This website is hosted on GitHub Pages, a service of GitHub, Inc. in the United States. Like most web hosts, GitHub
+    may log technical details of each visit, such as your IP address, for security and to keep the service running. We
+    don't receive or use these logs. GitHub's handling of this data is described in the
+    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub General Privacy Statement</a>.
+  </p>
+
+  <h2>How we use your information</h2>
+  <p>We use the information you send us to:</p>
+  <ul>
+    <li>reply to your enquiry and keep a record of the conversation</li>
+    <li>discuss, provide or improve our products and services</li>
+    <li>follow up on partnership or product ideas you've raised with us</li>
+    <li>meet our legal, tax and accounting obligations</li>
+  </ul>
+  <p>
+    We won't add you to a mailing list or send you marketing unless you ask us to, and you can tell us to stop at any
+    time. We never sell personal information.
+  </p>
+
+  <h2>Who we share it with</h2>
+  <p>We only share personal information when we need to, with:</p>
+  <ul>
+    <li>service providers who help us run the business, such as our email and file storage providers</li>
+    <li>professional advisers, such as our accountant or lawyer</li>
+    <li>government bodies or others where the law requires or allows it</li>
+  </ul>
+  <p>
+    Some of these providers, including GitHub, store data outside Australia, mainly in the United States. When we use
+    overseas providers, we take reasonable steps to make sure they protect personal information to a standard
+    consistent with the Australian Privacy Principles.
+  </p>
+
+  <h2>How we store and protect it</h2>
+  <p>
+    We keep personal information in secure, access-controlled systems and take reasonable steps to protect it from
+    misuse, loss, and unauthorised access, change or disclosure. We keep it only for as long as we need it for the
+    purposes above or as the law requires, then delete or de-identify it.
+  </p>
+
+  <h2>Access and correction</h2>
+  <p>
+    You can ask to see the personal information we hold about you, or ask us to correct or delete it, by contacting
+    us. We'll respond within 30 days. If we can't do what you ask, we'll explain why.
+  </p>
+
+  <h2>Complaints</h2>
+  <p>
+    If you're concerned about how we've handled your personal information, contact us and we'll respond within 30
+    days. If you're not satisfied with our response, you can contact the Office of the Australian Information Commissioner at
+    <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. The current version is always on this page, with the date it was last
+    updated at the top.
+  </p>
+
+  <h2>Contact us</h2>
+  <p>
+    {site.legalName}<br />
+    {site.state}, {site.location}
+  </p>
+  <p>See also our <a href="/terms/">terms and conditions</a>.</p>
+</LegalLayout>

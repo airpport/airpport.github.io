@@ -1,5 +1,8 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Picture } from "astro:assets";
 import Icon from "./Icon.astro";
+import { heroImage } from "../data/images";
 
 interface Tab {
   key: string;
@@ -7,7 +10,7 @@ interface Tab {
   eyebrow: string;
   title: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   cta?: { label: string; href: string };
 }
 
@@ -29,13 +32,12 @@ const isExternal = (href: string) => /^https?:/.test(href);
           data-slide={tab.key}
           aria-hidden={i === 0 ? undefined : "true"}
         >
-          <img
+          <Picture
             src={tab.image}
             alt=""
+            {...heroImage}
             fetchpriority={i === 0 ? "high" : undefined}
-            loading={i === 0 ? undefined : "lazy"}
-            decoding="async"
-            class="block h-full w-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
           />
           <div class="hero-grain absolute inset-0 mix-blend-overlay" />
           <div class="absolute inset-0 bg-linear-to-b from-black/25 via-black/5 to-black/45" />

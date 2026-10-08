@@ -7,6 +7,8 @@ import PrinciplesBento from "../components/PrinciplesBento.astro";
 // import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
+import heroTerminal from "../assets/images/hero-terminal.jpg";
+import thumbTower from "../assets/images/thumb-tower.jpg";
 
 const values = [
   {
@@ -37,16 +39,16 @@ const values = [
 ---
 
 <BaseLayout
-  title="About"
-  description="airpport is a founder-led Australian software company making simple, fairly priced tools for small operators."
+  title="About us"
+  description="airpport is an independent, founder-led Australian software company making simple, fairly priced tools for small businesses, starting with caravan parks."
 >
   <Hero
     eyebrow="About"
     title="Where small operators take off"
     description="airpport is an independent, founder-led software company building tools for Australian small businesses."
     trust={`Independent · Made in ${site.location}`}
-    background="/images/hero-terminal.jpg"
-    thumbnail="/images/thumb-tower.jpg"
+    background={heroTerminal}
+    thumbnail={thumbTower}
   />
 
   <section class="px-6 py-20 md:py-28">
@@ -118,8 +120,8 @@ const values = [
     eyebrow="Say hello"
     title="Have a problem worth solving?"
     description="Tell us what's slowing your business down. It could be our next product."
-    primary={{ label: "Get in touch", href: "/contact" }}
-    secondary={{ label: "See SPACECAMPS", href: "/products" }}
+    primary={{ label: "Get in touch", href: "/contact/" }}
+    secondary={{ label: "See SPACECAMPS", href: "/products/" }}
   />
   */}
 </BaseLayout>

@@ -4,7 +4,10 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://airpport.github.io",
+  // The live domain. Sitemap URLs, canonicals and social image URLs are all built from this.
+  site: "https://airpport.com",
+  // Pages build to folders, and GitHub Pages redirects /about to /about/, so link to the slash form everywhere.
+  trailingSlash: "always",
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
