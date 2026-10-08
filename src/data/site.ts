@@ -4,7 +4,7 @@ export const site = {
   legalName: "airpport",
   tagline: "Software that gets small operators off the ground",
   description:
-    "airpport is an Australian software company building simple, honest tools for small businesses. Our first product is SPACECAMPS — online bookings and park management for caravan parks.",
+    "airpport is an Australian software company building simple tools for small businesses. Our first product, SPACECAMPS, runs online bookings and park management for caravan parks.",
   url: "https://airpport.github.io",
   // TODO: replace with the real inbox before launch.
   email: "hello@airpport.com.au",
@@ -22,23 +22,23 @@ export const spacecamps = {
   url: "https://spacecamps.com.au",
   tagline: "Your park takes the bookings. We don't take a cut.",
   summary:
-    "Online bookings, an interactive park map and guest communications for caravan parks — without commissions or setup fees.",
+    "Online bookings, an interactive park map and guest emails for caravan parks. No commissions or setup fees.",
   features: [
     {
       title: "24/7 online bookings",
-      description: "Guests book straight from your own branded booking page — day or night, no phone tag.",
+      description: "Guests book on your own branded page, day or night, without calling you.",
     },
     {
       title: "Interactive park map",
-      description: "Lay out every powered site, cabin and slab visually, so guests pick exactly where they stay.",
+      description: "Map every powered site, cabin and slab so guests can choose where they stay.",
     },
     {
       title: "Live availability",
-      description: "One calendar for every site. Real-time availability means no double bookings.",
+      description: "One live calendar covers every site, so nothing gets double-booked.",
     },
     {
       title: "Automatic guest emails",
-      description: "Confirmations, reminders and arrival details go out on their own.",
+      description: "Confirmations, reminders and arrival details send themselves.",
     },
     {
       title: "Secure payments",
