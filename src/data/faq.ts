@@ -55,7 +55,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What's next after SPACECAMPS?",
         answer:
-          "We're working on it now, for another industry stuck with bad software. If your business has a software problem that drives you mad, tell us about it.",
+          "We're working on it now, for another industry stuck with bad software.",
       },
       {
         question: "Are you open to partnerships?",
@@ -65,7 +65,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "How do I get in touch?",
         answer:
-          "Email us, and a person will write back. For SPACECAMPS support you can also go through spacecamps.com.au.",
+          "For SPACECAMPS questions and support, go to spacecamps.com.au. A person who works on the product will answer.",
       },
     ],
   },

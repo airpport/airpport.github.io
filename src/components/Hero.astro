@@ -1,11 +1,15 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Picture } from "astro:assets";
+import { heroImage, thumbImage } from "../data/images";
+
 interface Props {
   eyebrow: string;
   title: string;
   description: string;
   trust?: string;
-  background: string;
-  thumbnail?: string;
+  background: ImageMetadata;
+  thumbnail?: ImageMetadata;
   /** Darken the image a touch more when it's a light scene, to keep white text legible. */
   tone?: "light" | "dark";
 }
@@ -16,7 +20,7 @@ const { eyebrow, title, description, trust, background, thumbnail, tone = "light
 <div class="px-4 pt-4">
   <div class="relative mx-auto max-w-8xl overflow-hidden rounded-[2.5rem] bg-hero-bg">
     <div class="hero-bg absolute inset-0">
-      <img src={background} alt="" fetchpriority="high" decoding="async" class="block h-full w-full object-cover" />
+      <Picture src={background} alt="" {...heroImage} fetchpriority="high" loading="eager" />
       <div class="hero-grain absolute inset-0 mix-blend-overlay"></div>
       <div
         class:list={[
@@ -51,7 +55,7 @@ const { eyebrow, title, description, trust, background, thumbnail, tone = "light
           thumbnail ? (
             <div class="hero-rise" style="--rise-delay: 300ms">
               <div class="h-32 w-32 overflow-hidden rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm md:h-36 md:w-36">
-                <img src={thumbnail} alt="" loading="lazy" decoding="async" class="block h-full w-full object-cover" />
+                <Picture src={thumbnail} alt="" {...thumbImage} />
               </div>
             </div>
           ) : (

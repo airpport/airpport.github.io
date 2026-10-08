@@ -2,14 +2,15 @@
 export const site = {
   name: "airpport",
   legalName: "airpport Pty Ltd",
-  // Registered as AIRPPORT PTY LTD. Shown in the footer, on the contact and legal pages, and in structured data.
+  // Registered as AIRPPORT PTY LTD. Shown in the footer, on the legal pages, and in structured data.
   abn: "85 703 022 173",
   acn: "703 022 173",
   tagline: "Software that gets small operators off the ground",
   description:
     "airpport is an Australian software company building simple tools for small businesses, starting with SPACECAMPS, booking software for caravan parks.",
   url: "https://airpport.com",
-  // TODO: replace with the real inbox before launch.
+  // TODO: replace with the real inbox before launch. Hidden on the site for now; only the disabled
+  // contact page (src/pages/_contact.astro) uses it.
   email: "hello@airpport.com.au",
   location: "Australia",
   state: "NSW",

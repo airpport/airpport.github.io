@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import heroDepartures from "../assets/images/hero-departures.jpg";
 ---
 
 <BaseLayout title="Page not found" description="This page doesn't exist or has moved." noindex>
@@ -8,7 +9,7 @@ import Hero from "../components/Hero.astro";
     eyebrow="Error 404"
     title="This flight has already departed"
     description="This page doesn't exist or has moved."
-    background="/images/hero-departures.jpg"
+    background={heroDepartures}
     tone="dark"
   >
     <a

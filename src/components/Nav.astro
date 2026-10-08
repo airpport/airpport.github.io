@@ -39,12 +39,14 @@ const isActive = (href: string) => path === trim(href) || path.startsWith(`${tri
 
     <div class="flex items-center gap-2 pr-1">
       <ThemeToggle class="hidden sm:grid" />
+      {/* Contact page is disabled for now; restore this button with src/pages/_contact.astro.
       <a
         href="/contact/"
         class="hidden rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5 hover:shadow-md sm:inline-flex"
       >
         Get in touch
       </a>
+      */}
       <button
         type="button"
         id="mobile-menu-toggle"
@@ -97,12 +99,14 @@ const isActive = (href: string) => path === trim(href) || path.startsWith(`${tri
       }
     </ul>
     <div class="mt-4 flex items-center gap-3">
+      {/* Contact page is disabled for now; restore this button with src/pages/_contact.astro.
       <a
         href="/contact/"
         class="inline-flex flex-1 items-center justify-center rounded-full bg-background px-5 py-3 text-sm font-medium text-foreground"
       >
         Get in touch
       </a>
+      */}
       <ThemeToggle class="h-11! w-11!" />
     </div>
   </div>

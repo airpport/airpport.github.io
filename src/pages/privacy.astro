@@ -18,7 +18,7 @@ import { site, spacecamps } from "../data/site";
   <h2>What this policy covers</h2>
   <p>
     This policy covers this website ({site.url.replace("https://", "")}) and any contact you have with airpport
-    directly, such as emailing us about our products, partnerships or a business idea.
+    directly, such as writing to us about our products, partnerships or a business idea.
   </p>
   <p>
     {spacecamps.name} has its own privacy policy, which applies when you use the {spacecamps.name} service or website. You
@@ -32,10 +32,6 @@ import { site, spacecamps } from "../data/site";
     <li>the content of your message, and any details you include in it</li>
     <li>records of our correspondence with you</li>
   </ul>
-  <p>
-    The contact form on this website does not send or store anything. When you press send, it opens a pre-filled email
-    in your own mail app, and nothing reaches us until you send that email yourself.
-  </p>
 
   <h2>Cookies, analytics and tracking</h2>
   <p>
@@ -91,16 +87,14 @@ import { site, spacecamps } from "../data/site";
 
   <h2>Access and correction</h2>
   <p>
-    You can ask to see the personal information we hold about you, or ask us to correct or delete it, by emailing
-    <a href={`mailto:${site.email}`}>{site.email}</a>. We'll respond within 30 days. If we can't do what you ask, we'll
-    explain why.
+    You can ask to see the personal information we hold about you, or ask us to correct or delete it, by contacting
+    us. We'll respond within 30 days. If we can't do what you ask, we'll explain why.
   </p>
 
   <h2>Complaints</h2>
   <p>
-    If you're concerned about how we've handled your personal information, email us at
-    <a href={`mailto:${site.email}`}>{site.email}</a> and we'll respond within 30 days. If you're not satisfied with our
-    response, you can contact the Office of the Australian Information Commissioner at
+    If you're concerned about how we've handled your personal information, contact us and we'll respond within 30
+    days. If you're not satisfied with our response, you can contact the Office of the Australian Information Commissioner at
     <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.
   </p>
 
@@ -114,8 +108,7 @@ import { site, spacecamps } from "../data/site";
   <p>
     {site.legalName}<br />
     ABN {site.abn} · ACN {site.acn}<br />
-    {site.state}, {site.location}<br />
-    <a href={`mailto:${site.email}`}>{site.email}</a>
+    {site.state}, {site.location}
   </p>
   <p>See also our <a href="/terms/">terms and conditions</a>.</p>
 </LegalLayout>

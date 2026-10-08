@@ -7,6 +7,8 @@ import PrinciplesBento from "../components/PrinciplesBento.astro";
 // import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
+import heroTerminal from "../assets/images/hero-terminal.jpg";
+import thumbTower from "../assets/images/thumb-tower.jpg";
 
 const values = [
   {
@@ -45,8 +47,8 @@ const values = [
     title="Where small operators take off"
     description="airpport is an independent, founder-led software company building tools for Australian small businesses."
     trust={`Independent · Made in ${site.location}`}
-    background="/images/hero-terminal.jpg"
-    thumbnail="/images/thumb-tower.jpg"
+    background={heroTerminal}
+    thumbnail={thumbTower}
   />
 
   <section class="px-6 py-20 md:py-28">

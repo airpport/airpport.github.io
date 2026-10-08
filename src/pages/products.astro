@@ -8,6 +8,9 @@ import ProductCards from "../components/ProductCards.astro";
 // import CtaBanner from "../components/CtaBanner.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
+import heroHangar from "../assets/images/hero-hangar.jpg";
+import productParkmap from "../assets/images/product-parkmap.jpg";
+import thumbCaravan from "../assets/images/thumb-caravan.jpg";
 
 const featureIcons = ["calendar", "map", "layers", "mail", "credit-card", "signal"] as const;
 
@@ -47,8 +50,8 @@ const productSchema = {
     title="SPACECAMPS, and what comes next"
     description={spacecamps.summary}
     trust="Product 01 · Live"
-    background="/images/hero-hangar.jpg"
-    thumbnail="/images/thumb-caravan.jpg"
+    background={heroHangar}
+    thumbnail={thumbCaravan}
     tone="dark"
   >
     <a
@@ -176,7 +179,7 @@ const productSchema = {
         description="SPACECAMPS is the first. The next one is in the hangar."
       />
       <ProductCards
-        image="/images/product-parkmap.jpg"
+        image={productParkmap}
         imageAlt="Illustrated aerial map of a caravan park with one site highlighted"
       />
     </div>

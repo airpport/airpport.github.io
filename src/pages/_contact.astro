@@ -4,6 +4,8 @@ import Hero from "../components/Hero.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Icon from "../components/Icon.astro";
 import { site, spacecamps } from "../data/site";
+import heroApproach from "../assets/images/hero-approach.jpg";
+import thumbWindow from "../assets/images/thumb-window.jpg";
 
 const channels = [
   {
@@ -40,8 +42,8 @@ const field =
     title="Let's talk"
     description="Write to us about your caravan park, an idea for our next product, or a partnership."
     trust="Usually replies within a day"
-    background="/images/hero-approach.jpg"
-    thumbnail="/images/thumb-window.jpg"
+    background={heroApproach}
+    thumbnail={thumbWindow}
   />
 
   <section class="px-6 py-20 md:py-28">
