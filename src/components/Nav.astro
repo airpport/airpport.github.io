@@ -7,10 +7,10 @@ const path = trim(Astro.url.pathname);
 const isActive = (href: string) => path === trim(href) || path.startsWith(`${trim(href)}/`);
 ---
 
-<header class="sticky top-0 z-50 w-full px-4 pt-4">
+<header class="sticky top-0 z-50 w-full px-6 pt-4">
   <nav
     aria-label="Main"
-    class="relative z-50 mx-auto flex max-w-5xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
+    class="relative z-50 mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border/60 bg-foreground/95 px-2 py-2 text-background shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur"
   >
     <a href="/" class="flex items-center pl-4 pr-2" aria-label="airpport home">
       <!-- The bar is dark in light mode and light in dark mode, so swap the wordmark to match. -->
@@ -76,7 +76,7 @@ const isActive = (href: string) => path === trim(href) || path.startsWith(`${tri
 
   <div
     id="mobile-menu"
-    class="pointer-events-none fixed inset-x-4 top-20 z-40 origin-top scale-95 rounded-3xl border border-border/60 bg-foreground/95 p-6 text-background opacity-0 shadow-[0_20px_60px_rgb(0,0,0,0.25)] backdrop-blur transition-all duration-300 md:hidden"
+    class="pointer-events-none fixed inset-x-6 top-20 z-40 origin-top scale-95 rounded-3xl border border-border/60 bg-foreground/95 p-6 text-background opacity-0 shadow-[0_20px_60px_rgb(0,0,0,0.25)] backdrop-blur transition-all duration-300 md:hidden"
   >
     <ul class="flex flex-col gap-1 text-base">
       {
