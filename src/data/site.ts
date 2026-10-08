@@ -2,7 +2,8 @@
 export const site = {
   name: "airpport",
   legalName: "airpport Pty Ltd",
-  // Registered as AIRPPORT PTY LTD. Shown in the footer, on the legal pages, and in structured data.
+  // Registered as AIRPPORT PTY LTD. ABN and ACN are shown on the privacy and terms pages (and the disabled
+  // contact page), and in the structured data search engines read.
   abn: "85 703 022 173",
   acn: "703 022 173",
   tagline: "Software that gets small operators off the ground",
