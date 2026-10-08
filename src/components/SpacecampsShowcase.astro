@@ -2,114 +2,175 @@
 import { Picture } from "astro:assets";
 import Icon from "./Icon.astro";
 import { formats } from "../data/images";
-import thumbNight from "../assets/images/thumb-night.jpg";
+import productCaravan from "../assets/images/product-caravan.jpg";
 
-// Site grid for the park-map mock: 0 = free, 1 = booked, 2 = selected.
+// Site markers for the park-map mock: 0 = powered, 1 = unpowered, 2 = the guest's pick.
 const sites = [1, 0, 0, 1, 1, 0, 0, 1, 0, 2, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0];
 const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
+// The two browser mocks copy a real SPACECAMPS guest portal, so they keep the portal's own light palette in
+// both site themes. Colours are taken from the live portal (see the .portal block below).
+const portalHost = "riverbend.spacecamps.com.au";
 ---
 
-<div class="mx-auto grid max-w-6xl overflow-hidden rounded-[1.75rem] border border-dashed border-border bg-card/40 md:grid-cols-3">
-  <!-- Booking page -->
+<div class="mx-auto grid max-w-6xl grid-cols-1 overflow-hidden rounded-[1.75rem] border border-dashed border-border bg-card/40 md:grid-cols-3">
+  <!-- Booking page: the park's portal home page -->
   <div data-reveal class:list={[cell, "border-b border-dashed md:border-r"]}>
     <div>
       <h3 class="text-xl font-medium tracking-tight">Your own booking page</h3>
       <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Every park gets its own branded booking site that takes bookings while you sleep.
+        Every park gets a booking page in its own colours on a spacecamps.com.au address, taking bookings at any hour.
       </p>
     </div>
-    <div class="rounded-2xl border border-border bg-background p-3 shadow-sm">
-      <div class="flex items-center gap-1.5 border-b border-border pb-2.5">
+    <div class="overflow-hidden rounded-2xl border border-border bg-background shadow-sm" aria-hidden="true">
+      <div class="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
         <span class="h-2 w-2 rounded-full bg-border"></span>
         <span class="h-2 w-2 rounded-full bg-border"></span>
         <span class="h-2 w-2 rounded-full bg-border"></span>
-        <span class="ml-2 flex-1 truncate rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">
-          yourpark.spacecamps.com.au
-        </span>
+        <span class="ml-2 flex-1 truncate rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">{portalHost}</span>
       </div>
-      <div class="space-y-2 pt-3">
-        <Picture
-          src={thumbNight}
-          alt=""
-          formats={formats}
-          widths={[400, 600]}
-          sizes="(min-width: 768px) 330px, 100vw"
-          loading="lazy"
-          decoding="async"
-          pictureAttributes={{ class: "block" }}
-          class="block h-16 w-full rounded-xl object-cover"
-        />
-        <div class="h-2.5 w-2/3 rounded-full bg-foreground/80"></div>
-        <div class="h-2 w-1/2 rounded-full bg-muted"></div>
-        <div class="flex gap-2 pt-1">
-          <span class="h-7 flex-1 rounded-lg border border-border"></span>
-          <span class="h-7 flex-1 rounded-lg border border-border"></span>
-          <span class="h-7 w-16 rounded-lg bg-foreground"></span>
+      <div class="portal p-3">
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="grid h-6 w-6 place-items-center rounded-lg bg-(--p-600) text-white shadow-sm">
+              <Icon name="home" class="h-3 w-3" />
+            </span>
+            <span class="text-[11px] font-semibold tracking-tight">Riverbend</span>
+          </div>
+          <div class="flex items-center gap-0.5 text-[9px] font-medium text-(--p-muted)">
+            <span class="rounded-full bg-(--p-100) px-2 py-0.5 text-(--p-700)">Home</span>
+            <span class="px-1.5 py-0.5">Sites</span>
+            <span class="px-1.5 py-0.5">Map</span>
+          </div>
+        </div>
+        <div class="relative mt-3 overflow-hidden rounded-xl shadow-md">
+          <Picture
+            src={productCaravan}
+            alt=""
+            formats={formats}
+            widths={[400, 600]}
+            sizes="(min-width: 768px) 330px, 100vw"
+            loading="lazy"
+            decoding="async"
+            pictureAttributes={{ class: "block" }}
+            class="block h-32 w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-linear-to-r from-black/55 via-black/20 to-transparent"></div>
+          <div class="absolute inset-y-0 left-3 flex flex-col justify-center">
+            <p class="portal-display text-xl leading-none font-bold text-white">Riverbend</p>
+            <p class="mt-1 text-[9px] text-white/85">Holiday park on the river</p>
+            <span class="mt-2 w-fit rounded-full bg-white px-2.5 py-1 text-[9px] font-semibold text-(--p-ink) shadow">
+              Browse Sites
+            </span>
+          </div>
+        </div>
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          {
+            [
+              ["Total sites", "48"],
+              ["Available tonight", "12"],
+            ].map(([label, value]) => (
+              <div class="flex items-center justify-between rounded-lg bg-white p-2 shadow-sm ring-1 ring-(--p-ring)">
+                <div>
+                  <p class="text-[8px] tracking-wider text-(--p-muted) uppercase">{label}</p>
+                  <p class="mt-0.5 text-sm leading-none font-semibold">{value}</p>
+                </div>
+                <span class="text-[10px] text-(--p-faint)">›</span>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Booking flow (tall) -->
+  <!-- Booking confirmation (tall): the portal's confirmation page -->
   <div data-reveal style="--reveal-delay:100ms" class:list={[cell, "border-b border-dashed md:row-span-2 md:border-r md:border-b-0"]}>
     <div>
-      <h3 class="text-xl font-medium tracking-tight">Booked in under a minute</h3>
+      <h3 class="text-xl font-medium tracking-tight">Booked and paid online</h3>
       <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Guests pick dates, choose a site and pay. Nobody has to pick up the phone.
+        Guests pick a free site, see the exact price and pay by card. Nobody has to pick up the phone.
       </p>
     </div>
-    <div class="flex flex-1 flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-sm">
-      <div class="flex items-center gap-3 border-b border-border p-4">
-        <span class="grid h-9 w-9 place-items-center rounded-full bg-foreground text-background">
-          <Icon name="tent" class="h-4 w-4" />
+    <div class="flex flex-1 flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-sm" aria-hidden="true">
+      <div class="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
+        <span class="h-2 w-2 rounded-full bg-border"></span>
+        <span class="h-2 w-2 rounded-full bg-border"></span>
+        <span class="h-2 w-2 rounded-full bg-border"></span>
+        <span class="ml-2 flex-1 truncate rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">
+          {portalHost}/book/confirm
         </span>
-        <div>
-          <p class="text-sm font-semibold">Riverbend Holiday Park</p>
-          <p class="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Taking bookings
-          </p>
-        </div>
       </div>
-      <div class="flex-1 space-y-3 p-4">
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <div class="rounded-xl border border-border p-2.5">
-            <p class="text-[10px] tracking-wider text-muted-foreground uppercase">Arrive</p>
-            <p class="mt-0.5 font-medium">Fri 12 Dec</p>
+      <div class="portal flex flex-1 flex-col gap-3 p-3">
+        <div class="rounded-xl bg-white px-3 py-4 text-center shadow-sm ring-1 ring-(--p-ring)">
+          <span class="mx-auto grid h-8 w-8 place-items-center rounded-full bg-(--ok-100) text-(--ok-600)">
+            <Icon name="check" class="h-4 w-4" />
+          </span>
+          <p class="portal-display mt-2 text-base font-bold text-(--ok-900)">Booking Confirmed!</p>
+          <p class="mt-1 text-[10px] text-(--ok-700)">A confirmation email has been sent to your email address.</p>
+        </div>
+
+        <div class="overflow-hidden rounded-xl bg-white text-[11px] shadow-sm ring-1 ring-(--p-ring)">
+          <div class="flex items-center justify-between bg-(--p-tint) px-3 py-2.5">
+            <div>
+              <p class="text-[8px] font-medium tracking-wider text-(--p-muted) uppercase">Booking reference</p>
+              <p class="mt-0.5 font-mono text-xs font-bold">RVB7K2QX</p>
+            </div>
+            <span class="rounded-full bg-(--ok-100) px-2 py-0.5 text-[9px] font-semibold text-(--ok-700)">Confirmed</span>
           </div>
-          <div class="rounded-xl border border-border p-2.5">
-            <p class="text-[10px] tracking-wider text-muted-foreground uppercase">Depart</p>
-            <p class="mt-0.5 font-medium">Mon 15 Dec</p>
+          <div class="border-t border-(--p-ring) px-3 py-2.5">
+            <p class="text-[8px] font-medium tracking-wider text-(--p-muted) uppercase">Site</p>
+            <p class="mt-0.5 text-sm font-medium">Site 14 · Powered</p>
+            <p class="text-[10px] text-(--p-muted)">at Riverbend Holiday Park</p>
+          </div>
+          <div class="grid grid-cols-2 border-t border-(--p-ring)">
+            {
+              [
+                ["Check-in", "Fri, 11 Dec 2026", "After 2:00 PM"],
+                ["Check-out", "Mon, 14 Dec 2026", "Before 11:00 AM"],
+              ].map(([label, date, time], i) => (
+                <div class:list={["px-3 py-2.5", i === 0 && "border-r border-(--p-ring)"]}>
+                  <p class="text-[8px] font-medium tracking-wider text-(--p-muted) uppercase">{label}</p>
+                  <p class="mt-0.5 font-medium">{date}</p>
+                  <p class="text-[10px] text-(--p-muted)">{time}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div class="border-t border-(--p-ring) px-3 py-2.5">
+            <div class="flex justify-between text-[10px] text-(--p-muted)">
+              <span>$42.00 × 3 nights</span>
+              <span>$126.00</span>
+            </div>
+            <div class="mt-2 flex items-baseline justify-between border-t border-(--p-ring) pt-2">
+              <span class="font-medium">Total paid</span>
+              <span class="text-sm font-bold">$126.00</span>
+            </div>
           </div>
         </div>
-        <div class="rounded-xl border border-border">
-          <p class="border-b border-border px-3 py-2 text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
-            Your stay
-          </p>
-          {
-            [
-              ["Site", "14 · Powered"],
-              ["Guests", "2 adults, 1 child"],
-              ["Nights", "3"],
-              ["Total", "$126.00"],
-            ].map(([k, v]) => (
-              <div class="flex justify-between border-b border-border px-3 py-2 text-xs last:border-b-0">
-                <span class="text-muted-foreground">{k}</span>
-                <span class="font-semibold">{v}</span>
-              </div>
-            ))
-          }
+
+        <div class="rounded-xl bg-white px-3 py-2.5 text-[10px] text-(--p-muted) shadow-sm ring-1 ring-(--p-ring)">
+          <p class="text-[11px] font-semibold text-(--p-ink)">What's Next?</p>
+          <ul class="mt-2 space-y-1.5">
+            {
+              [
+                ["mail", "Check your email for the confirmation details and receipt"],
+                ["calendar", "Arrive on Fri, 11 Dec 2026 for check-in"],
+              ].map(([icon, text]) => (
+                <li class="flex items-center gap-2">
+                  <span class="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-(--p-tint) ring-1 ring-(--p-ring)">
+                    <Icon name={icon as "mail" | "calendar"} class="h-2.5 w-2.5" />
+                  </span>
+                  {text}
+                </li>
+              ))
+            }
+          </ul>
         </div>
-        <div class="flex gap-1.5">
-          {["Pets OK", "Ensuite", "Riverfront"].map((t) => (
-            <span class="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{t}</span>
-          ))}
+
+        <div class="mt-auto grid grid-cols-2 gap-2 text-[10px] font-semibold">
+          <span class="rounded-lg bg-white py-2 text-center shadow-sm ring-1 ring-(--p-ring)">Back to Home</span>
+          <span class="rounded-lg bg-(--p-600) py-2 text-center text-white shadow-sm">Browse More Sites</span>
         </div>
-      </div>
-      <div class="flex items-center justify-between border-t border-border p-3 pl-4">
-        <span class="text-xs text-muted-foreground">Secure checkout</span>
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-xs font-medium text-background">
-          Book now <Icon name="arrow-right" class="h-3 w-3" />
-        </span>
       </div>
     </div>
   </div>
@@ -119,7 +180,7 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
     <div>
       <h3 class="text-xl font-medium tracking-tight">Interactive park map</h3>
       <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Draw your park once. Guests see which sites are free and where they’ll stay.
+        Upload a map of your park and place each site on it, so guests can see where they’ll stay.
       </p>
     </div>
     <div class="rounded-2xl border border-border bg-background p-4 shadow-sm">
@@ -138,8 +199,8 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
         }
       </div>
       <div class="mt-3 flex gap-4 text-[10px] text-muted-foreground">
-        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm border border-border bg-muted"></span>Free</span>
-        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm bg-foreground/15"></span>Booked</span>
+        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm border border-border bg-muted"></span>Powered</span>
+        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm bg-foreground/15"></span>Unpowered</span>
         <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-sm bg-brand"></span>Your pick</span>
       </div>
     </div>
@@ -159,9 +220,8 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
       </span>
       <div class="min-w-0 flex-1">
         <p class="text-sm font-semibold">$126.00 received</p>
-        <p class="truncate text-[11px] text-muted-foreground">Site 14 · 3 nights · Card •• 4242</p>
+        <p class="truncate text-[11px] text-muted-foreground">Site 14 · 3 nights · No commission</p>
       </div>
-      <span class="text-[11px] font-medium text-muted-foreground">0% fee</span>
     </div>
   </div>
 
@@ -170,18 +230,17 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
     <div>
       <h3 class="text-xl font-medium tracking-tight">Guests kept in the loop</h3>
       <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-        SPACECAMPS sends confirmations, reminders and arrival info for you, so you field fewer calls.
+        SPACECAMPS writes and sends the booking confirmation and online check-in emails for you, so fewer guests ring after hours.
       </p>
     </div>
     <ul class="space-y-2">
       {
         [
-          ["mail", "Booking confirmation", "Sent instantly"],
-          ["bell", "Arrival reminder", "2 days before"],
-          ["map", "Directions & site info", "Morning of arrival"],
+          ["mail", "Booking confirmation", "Sent when they book"],
+          ["key", "Online check-in", "Gate code on their phone"],
         ].map(([icon, title, when]) => (
           <li class="flex items-center gap-3 rounded-xl border border-border bg-background px-3 py-2.5 shadow-sm">
-            <Icon name={icon as "mail" | "bell" | "map"} class="h-4 w-4 text-muted-foreground" />
+            <Icon name={icon as "mail" | "key"} class="h-4 w-4 text-muted-foreground" />
             <span class="flex-1 text-xs font-medium">{title}</span>
             <span class="text-[10px] text-muted-foreground">{when}</span>
           </li>
@@ -190,3 +249,28 @@ const cell = "relative flex flex-col gap-6 border-border p-7 md:p-8";
     </ul>
   </div>
 </div>
+
+<style>
+  /* Palette of the live SPACECAMPS guest portal (testo.spacecamps.com.au), kept light in both site themes. */
+  .portal {
+    --p-600: oklch(0.651 0.146 47);
+    --p-700: oklch(0.548 0.125 47);
+    --p-100: oklch(0.961 0.023 47);
+    --p-ink: oklch(0.22 0.008 175);
+    --p-muted: oklch(0.45 0.011 175);
+    --p-faint: oklch(0.7 0.01 175);
+    --p-ring: oklch(0.926 0.004 175);
+    --p-tint: oklch(0.985 0.002 175);
+    --ok-100: oklch(0.95 0.052 163);
+    --ok-600: oklch(0.596 0.145 163);
+    --ok-700: oklch(0.508 0.118 166);
+    --ok-900: oklch(0.378 0.077 169);
+    background: oklch(0.982 0.002 175);
+    color: var(--p-ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .portal-display {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: -0.02em;
+  }
+</style>

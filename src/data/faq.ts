@@ -30,22 +30,22 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What is SPACECAMPS?",
         answer:
-          "Our first product: booking and park management software for caravan parks and campgrounds. You get a 24/7 booking page, an interactive park map, live availability, automatic guest emails and card payments.",
+          "Our first product: booking and park management software for caravan parks and campgrounds. You get a booking page guests can use at any hour, an interactive park map, one calendar for every booking, online check-in, confirmation and check-in emails, and card payments through Stripe.",
       },
       {
         question: "How much does it cost?",
         answer:
-          "$29 a month covers up to 100 sites. Unlimited sites cost $79 a month, and groups running several parks get custom pricing. There are no setup fees or booking commissions.",
+          "$29 a month covers up to 100 sites. Unlimited sites cost $79 a month, and groups running several parks get custom pricing. There's no commission or booking fee on stays. Stripe's card processing fees still apply.",
       },
       {
         question: "Can I try it first?",
         answer:
-          "Yes. Every plan has a 30-day free trial, long enough to set up your park and take real bookings before you pay.",
+          "Yes. Every plan has a 30-day free trial and you don't need a credit card to start, so you can try it with your own park's sites and rates before you subscribe.",
       },
       {
         question: "Do I need to be technical?",
         answer:
-          "No. If you can use email, you can run SPACECAMPS. It works on a phone, even with patchy reception.",
+          "No. If you can fill in a form, you can set up your park, and most parks are live in under an hour. It works on a phone, even on one bar of signal.",
       },
     ],
   },

@@ -30,31 +30,31 @@ export const spacecamps = {
   url: "https://spacecamps.com.au",
   tagline: "Your park takes the bookings. We don't take a cut.",
   summary:
-    "Online bookings, an interactive park map and guest emails for caravan parks. No commissions or setup fees.",
+    "Online bookings, online check-in, an interactive park map and guest emails for caravan parks. No commission on stays.",
   features: [
     {
       title: "24/7 online bookings",
-      description: "Guests book on your own branded page, day or night, without calling you.",
+      description: "Guests pick a free site, see the exact price and book at any hour on a page in your park's colours.",
     },
     {
       title: "Interactive park map",
-      description: "Map every powered site, cabin and slab so guests can choose where they stay.",
+      description: "Upload a map of your park and place each site on it, so guests can see where they'll stay.",
     },
     {
-      title: "Live availability",
-      description: "One live calendar covers every site, so nothing gets double-booked.",
+      title: "One calendar",
+      description: "Direct bookings, walk-ins, permanents and OTA stays share one calendar your staff can check from their phones.",
     },
     {
-      title: "Automatic guest emails",
-      description: "Confirmations, reminders and arrival details send themselves.",
+      title: "Online check-in",
+      description: "Booking confirmation and check-in emails go out for you, and guests get the gate code on their phone.",
     },
     {
       title: "Secure payments",
-      description: "Card payments through Stripe, paid straight into your account.",
+      description: "Guests pay by card when they book, straight to your bank through Stripe.",
     },
     {
       title: "Built for the bush",
-      description: "Mobile-first and light on data, so it still works when the reception doesn't.",
+      description: "Fast for guests and staff on poor reception, even on one bar of signal.",
     },
   ],
   plans: [
