@@ -23,7 +23,7 @@ const { tabs, trust } = Astro.props;
 const isExternal = (href: string) => /^https?:/.test(href);
 ---
 
-<div class="px-4 pt-4" data-hero-tabs>
+<div class="px-6 pt-4 md:px-4" data-hero-tabs>
   <div class="relative mx-auto max-w-8xl overflow-hidden rounded-[2.5rem] bg-hero-bg">
     {
       tabs.map((tab, i) => (
