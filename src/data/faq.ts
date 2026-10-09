@@ -25,10 +25,10 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
   {
-    title: "SPACECAMPS",
+    title: "Spacecamps",
     items: [
       {
-        question: "What is SPACECAMPS?",
+        question: "What is Spacecamps?",
         answer:
           "Our first product: booking and park management software for caravan parks and campgrounds. You get a booking page guests can use at any hour, an interactive park map, one calendar for every booking, online check-in, confirmation and check-in emails, and card payments through Stripe.",
       },
@@ -53,7 +53,7 @@ export const faqGroups: FaqGroup[] = [
     title: "Working with us",
     items: [
       {
-        question: "What's next after SPACECAMPS?",
+        question: "What's next after Spacecamps?",
         answer:
           "We're working on it now, for another industry stuck with bad software.",
       },
@@ -65,7 +65,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "How do I get in touch?",
         answer:
-          "For SPACECAMPS questions and support, go to spacecamps.com.au. A person who works on the product will answer.",
+          "For Spacecamps questions and support, go to spacecamps.com.au. A person who works on the product will answer.",
       },
     ],
   },

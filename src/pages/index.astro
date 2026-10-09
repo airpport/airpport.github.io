@@ -25,11 +25,11 @@ const tabs = [
     description:
       "We build simple tools for Australian small businesses, starting with caravan parks.",
     image: heroSky,
-    cta: { label: "About us", href: "/about/" },
+    cta: { label: "About us", href: "/about" },
   },
   {
     key: "spacecamps",
-    label: "SPACECAMPS",
+    label: "Spacecamps",
     eyebrow: "Product 01 · Live now",
     title: "Your park takes the bookings. We don't take a cut.",
     description: spacecamps.summary,
@@ -42,10 +42,10 @@ const tabs = [
     eyebrow: "Cleared for take-off",
     title: "More products are on the runway.",
     description:
-      "SPACECAMPS is the first departure. The next product is already in the works.",
+      "Spacecamps is the first departure. The next product is already in the works.",
     image: heroRunway,
     // Contact page is disabled for now; restore this link with src/pages/_contact.astro.
-    // cta: { label: "Get in touch", href: "/contact/" },
+    // cta: { label: "Get in touch", href: "/contact" },
   },
 ];
 ---
@@ -84,7 +84,7 @@ const tabs = [
 
   <section class="px-6 py-20 md:py-28">
     <SectionHeading
-      eyebrow="Spotlight · SPACECAMPS"
+      eyebrow="Spotlight · Spacecamps"
       title="Everything a park needs to take bookings"
       description="Guests book, pay and check in from their phone, so fewer of them need to ring you."
     />
@@ -108,9 +108,9 @@ const tabs = [
   <CtaBanner
     eyebrow="Ready for take-off?"
     title="Let's get your business off the ground"
-    description="Run a caravan park? Try SPACECAMPS. Got a different problem? Tell us about it."
-    primary={{ label: "Try SPACECAMPS", href: spacecamps.url }}
-    secondary={{ label: "Get in touch", href: "/contact/" }}
+    description="Run a caravan park? Try Spacecamps. Got a different problem? Tell us about it."
+    primary={{ label: "Try Spacecamps", href: spacecamps.url }}
+    secondary={{ label: "Get in touch", href: "/contact" }}
   />
   */}
 </BaseLayout>
