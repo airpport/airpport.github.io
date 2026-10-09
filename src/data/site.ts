@@ -8,7 +8,7 @@ export const site = {
   acn: "703 022 173",
   tagline: "Software that gets small operators off the ground",
   description:
-    "airpport is an Australian software company building simple tools for small businesses, starting with SPACECAMPS, booking software for caravan parks.",
+    "airpport is an Australian software company building simple tools for small businesses, starting with Spacecamps, booking software for caravan parks.",
   url: "https://airpport.com",
   // TODO: replace with the real inbox before launch. Hidden on the site for now; only the disabled
   // contact page (src/pages/_contact.astro) uses it.
@@ -20,13 +20,13 @@ export const site = {
 };
 
 export const nav = [
-  { label: "About", href: "/about/" },
-  { label: "Products", href: "/products/" },
-  { label: "FAQ", href: "/faq/" },
+  { label: "About", href: "/about" },
+  { label: "Products", href: "/products" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export const spacecamps = {
-  name: "SPACECAMPS",
+  name: "Spacecamps",
   url: "https://spacecamps.com.au",
   tagline: "Your park takes the bookings. We don't take a cut.",
   summary:

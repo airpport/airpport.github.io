@@ -1,6 +1,6 @@
 # airpport.github.io
 
-Marketing website for **airpport** — an independent Australian software company and the home of [SPACECAMPS](https://spacecamps.com.au).
+Marketing website for **airpport** — an independent Australian software company and the home of [Spacecamps](https://spacecamps.com.au).
 
 Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). Static output, deployed to GitHub Pages.
 
@@ -20,7 +20,7 @@ Requires Node 22.12+.
 
 ```
 src/
-  data/site.ts        # company details, nav, SPACECAMPS features & pricing
+  data/site.ts        # company details, nav, Spacecamps features & pricing
   data/faq.ts         # FAQ content (used on / and /faq)
   layouts/            # BaseLayout (<head>, SEO tags, nav, footer), LegalLayout
   components/         # Hero, HeroTabs, FaqList, CtaBanner, Footer, …

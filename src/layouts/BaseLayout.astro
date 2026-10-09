@@ -23,8 +23,9 @@ const {
   noindex = false,
   schema,
 } = Astro.props;
-const fullTitle = title === site.name ? `${site.name} | ${site.tagline}` : `${title} | ${site.name}`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === site.name ? `${site.name} - ${site.tagline}` : `${title} - ${site.name}`;
+// Pages build to about.html etc. (see astro.config.mjs), but are served and linked without the extension.
+const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ""), Astro.site);
 const ogImage = new URL(image, Astro.site);
 
 const organization = {
