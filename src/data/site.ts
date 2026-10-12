@@ -10,8 +10,7 @@ export const site = {
   description:
     "airpport is an Australian software company building simple tools for small businesses, starting with Spacecamps, booking software for caravan parks.",
   url: "https://airpport.com",
-  // TODO: replace with the real inbox before launch. Hidden on the site for now; only the disabled
-  // contact page (src/pages/_contact.astro) uses it.
+  // Shown as a mailto link in the footer. The disabled contact page (src/pages/_contact.astro) also uses it.
   email: "hello@airpport.com.au",
   location: "Australia",
   state: "NSW",
