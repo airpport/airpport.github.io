@@ -1,6 +1,7 @@
 ---
 import { site, spacecamps } from "../data/site";
 import Icon from "./Icon.astro";
+import SpacecampsMark from "./SpacecampsMark.astro";
 
 const columns = [
   {
@@ -71,7 +72,7 @@ const year = new Date().getFullYear();
           aria-label="Spacecamps website"
           class="grid h-9 w-9 place-items-center rounded-full border border-background/20 text-background/80 transition-colors hover:border-background hover:bg-background hover:text-foreground"
         >
-          <Icon name="tent" />
+          <SpacecampsMark class="h-4 w-auto" />
         </a>
         <a
           href={site.url}
