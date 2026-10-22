@@ -35,7 +35,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "How much does it cost?",
         answer:
-          "$29 a month covers up to 100 sites. Unlimited sites cost $79 a month, and groups running several parks get custom pricing. There's no commission or booking fee on stays. Stripe's card processing fees still apply.",
+          "$59 a month covers up to 100 sites. Up to 250 sites is $129 a month, and parks with more than 250 sites, or groups running several parks, get custom pricing. There's no commission or booking fee on stays. Stripe's card processing fees still apply. Prices are in AUD and include tax.",
       },
       {
         question: "Can I try it first?",

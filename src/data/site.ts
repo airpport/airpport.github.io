@@ -58,8 +58,8 @@ export const spacecamps = {
     },
   ],
   plans: [
-    { name: "Small", price: "$29", unit: "/month", detail: "Up to 100 sites" },
-    { name: "Medium", price: "$79", unit: "/month", detail: "Unlimited sites", featured: true },
-    { name: "Enterprise", price: "Custom", unit: "", detail: "Multiple parks & API access" },
+    { name: "Small", price: "$59", unit: "/month", detail: "Up to 100 sites" },
+    { name: "Medium", price: "$129", unit: "/month", detail: "Up to 250 sites", featured: true },
+    { name: "Enterprise", price: "Custom", unit: "", detail: "Unlimited sites" },
   ],
 };
